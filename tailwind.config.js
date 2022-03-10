@@ -5,15 +5,14 @@ module.exports = {
   content: ["./*.{html,js}"],
   theme: {
     colors: {
-      'polo-blue': '#98A7D3',
-      'french-lilac': '#E6BEE7',
-      'butterfly-bush': '#735893',
-      'coral-tree': '#A36D6B',
-      'light-blue': '#C9DBF2',
-      'dark-blue': '#6BB3F2',
-      'blue': '#88C9F2',
-      'cyan': '#B3ECF2',
-      'white': '#EBF2F2'
+      'Black': '#282C34',
+      'Red': '#E06C75',
+      'Green': '#98C379',
+      'Yellow': '#E5c07B',
+      'Blue': '#61AFEF',
+      'Purple': '#C678DD',
+      'Cyan': '#56B6C2',
+      'Grey': '#ABB2BF'
     },
     extend: {},
   },

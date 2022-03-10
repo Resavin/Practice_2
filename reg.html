@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <link href="dist/output.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title> "Клык моржа" вход или регистрация </title>
+  </head>
+
+
+ <body class="bg-Black font-monaco">
+        <div class="h-screen flex flex-col 
+                    items-center justify-center">
+            <p class="text-Green text-xl font-bold mb-3">
+              Вход или регистрация, введите свой ник
+            </p>
+  
+            <form class="flex flex-col 
+                    items-center justify-center">
+                <input label="Введите своё имя пользователя" 
+                       type="text" placeholder="Ник" 
+                       class="text-sm text-Black w-96 
+                              px-4 py-4 h-2 border 
+                              border-gray-200 rounded mb-2" />
+<!--                 <input aria-label="Enter your password" 
+                       type="password" placeholder="Password"
+                       class="text-sm text-gray-base w-96 
+                              py-4 px-4 h-2 border border-gray-200 
+                              rounded mb-2" /> -->
+  
+                <button type="submit"
+                        class="bg-Green font-bold text-Black border-Cyan rounded border-solid px-2 h-7 w-full mt-4">
+                    Ок, го некст
+                </button>
+            </form>
+        </div>
+    </body>
+</html>
