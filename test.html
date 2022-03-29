@@ -4,11 +4,26 @@
     <link href="dist/output.css" rel="stylesheet">
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title> Гостиница "Клык моржа" </title> 
- </head>  
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="rooms.js"></script>
+    <title> Гостиница "Клык моржа" </title>
+ </head>
  <body background="illmaticblue.gif">
+
+   <b>Время заезда / Время выезда / Количество человек </b>
+   <br/>
+   <input type="date" id="start" onchange="listRooms()" >
+
+   <input type="date" id="end" onchange="listRooms()" >
+
+   <input type="number" id="count" onchange="listRooms()" >
+
+   <div id="rooms">
+     <ol id = "roomList">
+     </ol>
+   </div>
 
  </body>
 </html>
