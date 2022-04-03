@@ -32,11 +32,31 @@ function addRooms(rooms){
       var root = document.getElementById('roomList');
       root.innerHTML = '';
       for( var i = 0; i < rooms['data']['data'].length; i++ ){
+
         var room = document.createElement("li");
-        var roomName = document.createElement("h5");
-        roomName.innerHTML = rooms['data']['data'][i]['title'];
+        var roomName = document.createElement("div");
+        var capasity = document.createElement("div");
+        var cost = document.createElement("div");
+        var images = document.createElement("img");
+        var type = document.createElement("div");
+        // var roomName = document.createElement("div");
+
+        roomName.innerHTML = '<b>' + rooms['data']['data'][i]['title'] + '</b>';
+        cost.innerHTML = 'Стоимость ' + rooms['data']['data'][i]['cost'];
+        images.setAttribute( 'height', '100' );
+        images.setAttribute( 'src', rooms['data']['data'][i]['images'] );
+        type.innerHTML = 'Крутость ' + rooms['data']['data'][i]['type'];
+        capasity.innerHTML = 'Вместимость ' + rooms['data']['data'][i]['capacity'];
+
+
         room.appendChild( roomName );
+        room.appendChild( cost );
+        room.appendChild( type );
+        room.appendChild( capasity );
+        room.appendChild( images );
+
         root.appendChild( room );
+
         console.log( rooms['data']['data'][i] )
       }
     }
