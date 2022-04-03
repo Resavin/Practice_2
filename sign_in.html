@@ -7,36 +7,14 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="rooms.js"></script>
-    <script type="text/javascript" src="user.js"></script>
     <script type="text/javascript" src="login.js"></script>
     <title> Гостиница "Клык моржа" </title>
  </head>
  <body >
-
-   <div id="footer">
-     <h2>ЛОГО</h2>
-     Гостинница Клык моржа
-     <h5 id="user" > </h5>
-   </div>
-
-
-
-   <br/>
-
-
-   <b>Время заезда / Время выезда / Количество человек </b>
-   <br/>
-   <input type="date" id="start" onchange="listRooms()" >
-
-   <input type="date" id="end" onchange="listRooms()" >
-
-   <input type="number" id="count" onchange="listRooms()" >
-
-   <div id="rooms">
-     <ol id = "roomList">
-     </ol>
-   </div>
+   <h2>Войти</h2>
+   <input id="login" type="text" placeholder="логин"><br/>
+   <input id="passw" type="password" placeholder="пароль"><br/>
+   <button type="button" name="button" onclick="login()" >Войти</button>
 
  </body>
 </html>
