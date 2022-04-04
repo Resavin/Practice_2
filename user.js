@@ -29,4 +29,5 @@ function is_user(){
 
 window.onload = function() {
   is_user();
+  page_content();
 }

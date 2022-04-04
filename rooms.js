@@ -34,7 +34,7 @@ function addRooms(rooms){
       for( var i = 0; i < rooms['data']['data'].length; i++ ){
 
         var room = document.createElement("li");
-        var roomName = document.createElement("div");
+        var roomName = document.createElement("a");
         var capasity = document.createElement("div");
         var cost = document.createElement("div");
         var images = document.createElement("img");
@@ -42,6 +42,8 @@ function addRooms(rooms){
         // var roomName = document.createElement("div");
 
         roomName.innerHTML = '<b>' + rooms['data']['data'][i]['title'] + '</b>';
+        roomName.setAttribute('href','room_detail.html?room=' + rooms['data']['data'][i]['id'] );
+
         cost.innerHTML = 'Стоимость ' + rooms['data']['data'][i]['cost'];
         images.setAttribute( 'height', '100' );
         images.setAttribute( 'src', rooms['data']['data'][i]['images'] );
@@ -65,3 +67,5 @@ function addRooms(rooms){
   // console.log( rooms );
   // console.log( rooms['data'] );
 }
+
+function page_content(){};
