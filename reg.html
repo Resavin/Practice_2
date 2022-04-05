@@ -10,7 +10,7 @@
     <title> Регистрация в "Клыке моржа" </title>
   </head>
 
- <body class="bg-Black font-sans">
+ <body class="bg-Black font-sans" onLoad="self.focus();document.formname.name.focus()">
         <div class="flex flex-col lg:mt-24 items-center justify-center">
             <img src="walrusBlue.png" width="200" height="164">
             <div class="text-Blue text-2xl font-bold">
@@ -42,10 +42,10 @@
                        class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium
                               py-4 px-4 h-2 rounded mb-2" />
               <input aria-label="Введите своё отчество" 
-                       type="text" placeholder="Третье имя"
+                       type="text" placeholder="Третье имя" 
                        class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium
                               py-4 px-4 h-2 rounded mb-2" />
-              <input aria-label="Введите свой номер телефона" 
+              <input aria-label="Введите свой номер телефона"
                        type="text" placeholder="Мобила"
                        class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium
                               py-4 px-4 h-2 rounded mb-2" />
