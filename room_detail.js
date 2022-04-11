@@ -121,6 +121,83 @@ function page_content(){
 
   });
 
+  url = baseurl + 'room/' + getAllUrlParams()['room'] + '/date' ;
+  busy_dates = ''
+  axios.get(url).then(function(r){
+    if( r['status'] == 200 ){
+      if( r['data']['status_code'] == 200 ){
+        busy_dates = r['data']['data']
+        console.log(busy_dates);
+
+        const DateTime = easepick.DateTime;
+              const bookedDates = busy_dates.map(d => {
+                  if (d instanceof Array) {
+                    const start = new DateTime(d[0], 'YYYY-MM-DD');
+                    const end = new DateTime(d[1], 'YYYY-MM-DD');
+                    console.log(d);
+                    return [start, end];
+                  }
+
+                  return new DateTime(d, 'YYYY-MM-DD');
+              });
+              const picker = new easepick.create({
+                element: document.getElementById('datepicker'),
+                css: [
+                  'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.1.3/dist/index.css',
+                  'https://easepick.com/assets/css/demo_hotelcal.css',
+                ],
+                grid: 1,
+                calendars: 1,
+                // documentClick: false,
+                inline: true,
+                lang: "ru-RU",
+                plugins: ['RangePlugin', 'LockPlugin'],
+                RangePlugin: {
+                  tooltipNumber(num) {
+                    return num - 1;
+                  },
+                  locale: {
+                    one: "ночь",
+                    few: "ночи",
+                    many: "ночей",
+                    other: "ночей"
+                  },
+                },
+                LockPlugin: {
+
+                  minDate: new Date(),
+                  minDays: 2,
+                  inseparable: true,
+                  filter(date, picked) {
+                    if (picked.length === 1) {
+                      const incl = date.isBefore(picked[0]) ? '[)' : '(]';
+                      return !picked[0].isSame(date, 'day') && date.inArray(bookedDates, incl);
+                    }
+
+                    return date.inArray(bookedDates, '[)');
+                  },
+                }
+
+
+              });
+
+
+
+
+
+
+
+
+      }
+    }
+  });
+
+
+
+
+
+
+
 };
 
 

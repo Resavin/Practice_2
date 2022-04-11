@@ -7,6 +7,7 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="date_pick.js"></script>
     <script type="text/javascript" src="rooms.js"></script>
     <script type="text/javascript" src="user.js"></script>
     <script type="text/javascript" src="login.js"></script>
@@ -25,13 +26,20 @@
    <br/>
 
 
-   <b>Время заезда / Время выезда / Количество человек </b>
    <br/>
-   <input type="date" id="start" onchange="listRooms()" >
 
-   <input type="date" id="end" onchange="listRooms()" >
+   <input type="date" id="start_date" >
 
-   <input type="number" id="count" onchange="listRooms()" >
+   <input type="date" id="end_date" >
+
+   <br/>
+
+   <input type="checkbox" id="guaranteed_booking" onchange="listRooms()">
+   <label for="guaranteed_booking">Дополнительный день на въезд</label>
+
+   <br/>
+
+   <input type="number" id="count" placeholder="Количество персон" onchange="listRooms()" >
 
    <div id="rooms">
      <ol id = "roomList">
