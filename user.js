@@ -4,7 +4,7 @@ function is_user(){
 
   var token = localStorage.getItem('token');
   var name = localStorage.getItem('name');
-  console.log( token );
+  //console.log( token );
   if( token == null ){
     var u = document.getElementById('user');
     var login = document.createElement("a");

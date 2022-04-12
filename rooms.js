@@ -2,7 +2,7 @@ baseurl = 'http://130.162.173.167/api/'
 
 
 function listRooms(){
-  console.log("SOME");
+  //console.log("SOME");
   var params = {};
   var start_date = document.getElementById('start_date').value;
   var end_date = document.getElementById('end_date').value;

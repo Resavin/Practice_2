@@ -70,7 +70,7 @@ function getAllUrlParams(url) {
 function page_content(){
 
   let url = baseurl + 'room/' + getAllUrlParams()['room'];
-  console.log(url);
+  //console.log(url);
   axios.get(url).then(function(r){
 
     if( r['status'] == 200 ){
@@ -114,38 +114,48 @@ function page_content(){
         room.appendChild(images);
         room.appendChild(amenities);
 
-        console.log(r['data']['data']);
+        //console.log(r['data']['data']);
       }
     }
-    console.log(r);
+    //console.log(r);
 
   });
 
-  url = baseurl + 'room/' + getAllUrlParams()['room'] + '/date' ;
+
+
+  url = baseurl + 'room/' + getAllUrlParams()['room'] + '/date';
   busy_dates = ''
   axios.get(url).then(function(r){
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
         busy_dates = r['data']['data']
-        console.log(busy_dates);
+        //console.log(busy_dates);
 
         const DateTime = easepick.DateTime;
               const bookedDates = busy_dates.map(d => {
                   if (d instanceof Array) {
                     const start = new DateTime(d[0], 'YYYY-MM-DD');
                     const end = new DateTime(d[1], 'YYYY-MM-DD');
-                    console.log(d);
+                    //console.log(d);
                     return [start, end];
                   }
 
                   return new DateTime(d, 'YYYY-MM-DD');
               });
               const picker = new easepick.create({
-                element: document.getElementById('datepicker'),
+                element: document.getElementById('datepicker_start'),
                 css: [
                   'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.1.3/dist/index.css',
                   'https://easepick.com/assets/css/demo_hotelcal.css',
                 ],
+                setup(picker) {
+                  picker.on('select', (e) => {
+                    const { view, date, target } = e.detail;
+                    // do something
+                    //console.log("BRUH");
+                    calculate_cost();
+                  });
+                },
                 grid: 1,
                 calendars: 1,
                 // documentClick: false,
@@ -153,6 +163,7 @@ function page_content(){
                 lang: "ru-RU",
                 plugins: ['RangePlugin', 'LockPlugin'],
                 RangePlugin: {
+                  elementEnd: "#datepicker_end",
                   tooltipNumber(num) {
                     return num - 1;
                   },
@@ -180,6 +191,8 @@ function page_content(){
 
 
               });
+              document.getElementById('datepicker_start').style.display = "none";
+              document.getElementById('datepicker_end').style.display = "none";
 
 
 
@@ -204,7 +217,28 @@ function page_content(){
 
 function calculate_cost(){
 
-  count = document.getElementById('count').value;
+  let start_date = document.getElementById('datepicker_start').value;
+  let end_date = document.getElementById('datepicker_end').value;
+  var params = {};
+
+  if( start_date != '' ){
+    params['arrivalDate'] = start_date;
+  }
+  if( end_date != '' ){
+    params['departureDate'] = end_date;
+  }
+
+  let url = baseurl + 'room/' + getAllUrlParams()['room'] + '/cost' ;
+
+  axios.get(url, {params:params}).then(function(r){
+    if( r['status'] == 200 ){
+      if( r['data']['status_code'] == 200 ){
+        cost = document.getElementById('cost');
+        //console.log(r['data']['data']);
+        cost.innerHTML = "Это будет стоить " + r['data']['data']['cost'] + " денег"
+      }
+    }
+  });
 
 
 
