@@ -1,63 +1,45 @@
-baseurl = 'http://130.162.173.167/api/'
-
+baseurl = 'http:
 
 function getAllUrlParams(url) {
 
-  // get query string from url (optional) or window
   var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
 
-  // we'll store the parameters here
   var obj = {};
 
-  // if query string exists
   if (queryString) {
 
-    // stuff after # is not part of query string, so get rid of it
     queryString = queryString.split('#')[0];
 
-    // split our query string into its component parts
-    var arr = queryString.split('&');
+        var arr = queryString.split('&');
 
     for (var i = 0; i < arr.length; i++) {
-      // separate the keys and the values
-      var a = arr[i].split('=');
+            var a = arr[i].split('=');
 
-      // set parameter name and value (use 'true' if empty)
-      var paramName = a[0];
+            var paramName = a[0];
       var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
 
-      // (optional) keep case consistent
-      paramName = paramName.toLowerCase();
+            paramName = paramName.toLowerCase();
       if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
 
-      // if the paramName ends with square brackets, e.g. colors[] or colors[2]
-      if (paramName.match(/\[(\d+)?\]$/)) {
+            if (paramName.match(/\[(\d+)?\]$/)) {
 
-        // create key if it doesn't exist
-        var key = paramName.replace(/\[(\d+)?\]/, '');
+                var key = paramName.replace(/\[(\d+)?\]/, '');
         if (!obj[key]) obj[key] = [];
 
-        // if it's an indexed array e.g. colors[2]
-        if (paramName.match(/\[\d+\]$/)) {
-          // get the index value and add the entry at the appropriate position
-          var index = /\[(\d+)\]/.exec(paramName)[1];
+                if (paramName.match(/\[\d+\]$/)) {
+                    var index = /\[(\d+)\]/.exec(paramName)[1];
           obj[key][index] = paramValue;
         } else {
-          // otherwise add the value to the end of the array
-          obj[key].push(paramValue);
+                    obj[key].push(paramValue);
         }
       } else {
-        // we're dealing with a string
-        if (!obj[paramName]) {
-          // if it doesn't exist, create property
-          obj[paramName] = paramValue;
+                if (!obj[paramName]) {
+                    obj[paramName] = paramValue;
         } else if (obj[paramName] && typeof obj[paramName] === 'string'){
-          // if property does exist and it's a string, convert it to an array
-          obj[paramName] = [obj[paramName]];
+                    obj[paramName] = [obj[paramName]];
           obj[paramName].push(paramValue);
         } else {
-          // otherwise add the property
-          obj[paramName].push(paramValue);
+                    obj[paramName].push(paramValue);
         }
       }
     }
@@ -70,8 +52,7 @@ function getAllUrlParams(url) {
 function page_content(){
 
   let url = baseurl + 'room/' + getAllUrlParams()['room'];
-  //console.log(url);
-  axios.get(url).then(function(r){
+    axios.get(url).then(function(r){
 
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
@@ -95,8 +76,7 @@ function page_content(){
           var image = document.createElement('img');
           image.setAttribute( 'height', '100' );
           image.setAttribute( 'src', r['data']['data']['images'][i] );
-          // console.log(r['data']['data']['images'][i]);
-          images.appendChild( image );
+                    images.appendChild( image );
         }
 
         amenities.innerHTML = "Удобства<br/>";
@@ -114,10 +94,8 @@ function page_content(){
         room.appendChild(images);
         room.appendChild(amenities);
 
-        //console.log(r['data']['data']);
-      }
+              }
     }
-    //console.log(r);
 
   });
 
@@ -129,15 +107,13 @@ function page_content(){
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
         busy_dates = r['data']['data']
-        //console.log(busy_dates);
 
         const DateTime = easepick.DateTime;
               const bookedDates = busy_dates.map(d => {
                   if (d instanceof Array) {
                     const start = new DateTime(d[0], 'YYYY-MM-DD');
                     const end = new DateTime(d[1], 'YYYY-MM-DD');
-                    //console.log(d);
-                    return [start, end];
+                                        return [start, end];
                   }
 
                   return new DateTime(d, 'YYYY-MM-DD');
@@ -145,21 +121,16 @@ function page_content(){
               const picker = new easepick.create({
                 element: document.getElementById('datepicker_start'),
                 css: [
-                  'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.1.3/dist/index.css',
-                  'https://easepick.com/assets/css/demo_hotelcal.css',
-                ],
+                  'https:                  'https:                ],
                 setup(picker) {
                   picker.on('select', (e) => {
                     const { view, date, target } = e.detail;
-                    // do something
-                    //console.log("BRUH");
-                    calculate_cost();
+                                                            calculate_cost();
                   });
                 },
                 grid: 1,
                 calendars: 1,
-                // documentClick: false,
-                inline: true,
+                                inline: true,
                 lang: "ru-RU",
                 plugins: ['RangePlugin', 'LockPlugin'],
                 RangePlugin: {
@@ -234,8 +205,7 @@ function calculate_cost(){
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
         cost = document.getElementById('cost');
-        //console.log(r['data']['data']);
-        cost.innerHTML = "Это будет стоить " + r['data']['data']['cost'] + " денег"
+                cost.innerHTML = "Это будет стоить " + r['data']['data']['cost'] + " денег"
       }
     }
   });
