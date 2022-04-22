@@ -14,10 +14,15 @@ function is_user(){
     u.appendChild( login );
   } else {
     var u = document.getElementById('user');
+    var user = document.createElement('a');
     var login = document.createElement("button");
-    // login.setAttribute('href','#');
+
+    user.setAttribute('href','user.html?user_login=' + name);
+    user.innerHTML = name;
     login.setAttribute('onclick','logout()');
     login.innerHTML = "Выйти";
+    u.appendChild( user );
+    u.appendChild( document.createElement('br') );
     u.appendChild( login );
   }
 

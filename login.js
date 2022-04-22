@@ -6,17 +6,17 @@ function login(){
   var params = {}
   params['username'] = login;
   params['password'] = passw;
-  // axios.post( baseurl + 'auth/login', {params:params} )
-  // .then( r => console.log(r) );
-  console.log(baseurl + 'auth/login');
+
+  //console.log(baseurl + 'auth/login');
   axios.post(baseurl + 'auth/login', params).then(function(r) {
-    console.log(r);
+    //console.log(r);
     if( r.status == 200 ){
       if( r['data'].status_code == 200 ){
         localStorage.setItem( 'token', r['data']['data']['token'] );
         localStorage.setItem( 'name', r['data']['data']['user']['username'] );
-
         window.location.href = 'test.html';
+      }else{
+        document.getElementById('err_api').innerHTML = r['data']['error'];
       }
 
     }
@@ -30,7 +30,7 @@ function logout(){
 
   config = {}
   console.log("logout");
-  axios.post(baseurl + 'auth/logout',{},{
+  axios.post(baseurl + 'auth/logout',{
     headers: {
         'Authorization':'Token ' + localStorage.getItem('token')
     }

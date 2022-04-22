@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="dist/output.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="user_info.js"></script>
+    <script type="text/javascript" src="register.js"></script>
+    <script type="text/javascript" src="user.js"></script>
+    <script type="text/javascript" src="login.js"></script>
+    <title> Гостиница "Клык моржа" </title>
+ </head>
+ <body >
+   <div id="footer">
+     <h2>ЛОГО</h2>
+     Гостинница Клык моржа
+     <h5 id="user" > </h5>
+   </div>
+
+   <div id="user_info">
+     <div id="username_head">Логин</div>
+     <input id="username" type="text" onchange="check_username()" readonly="readonly" required>
+     <div id="err_username"></div><br/>
+
+     <div id="email_head">Почта</div>
+     <input id="email" type="text" onchange="check_email()" readonly="readonly" required>
+     <div id="err_email"></div><br/>
+
+     <div id="first_name_head">Имя</div>
+     <input id="first_name" type="text" readonly="readonly">
+     <div id="err_first_name"></div><br/>
+
+     <div id="second_name_head">Фамилия</div>
+     <input id="second_name" type="text" readonly="readonly">
+     <div id="err_second_name"></div><br/>
+
+     <div id="phone_head">Телефон</div>
+     <input id="phone" type="tel" name="phone_number" list="tel-list" readonly="readonly">
+     <div id="err_phone"></div><br/>
+
+     <div id="error" ></div><br/>
+
+     <input id="edit_user" type="submit" onclick="edit_user()" value="Изменить сведения о себе"><br/>
+     <input id="save_user" type="submit" onclick="save_user()" value="Сохранить сведения о себе"><br/>
+
+     <div id="password_head">Смена пароля</div>
+     <div id="password">
+       <input id="passw" type="password" placeholder="введите ноый пароль" onchange="check_pass()" required><div id="err_passw"></div><br/>
+       <input id="passw_2" type="password" placeholder="повторите пароль" onchange="check_pass()" required><div id="err_passw_2"></div><br/>
+       <input type="submit" onclick="change_pass()" value="Изменить пароль">
+     </div>
+
+     <div id="err_password"></div><br/>
+
+     <!-- <div id="username"></div><div id="err_username"></div><br/> -->
+   </div>
+
+ </body>
+</html>
