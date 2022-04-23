@@ -6,12 +6,13 @@ function is_user(){
   var name = localStorage.getItem('name');
   //console.log( token );
   if( token == null ){
-    var u = document.getElementById('user');
-    var login = document.createElement("a");
+    // var u = document.getElementById('user');
+    // var login = document.createElement("a");
+    var login = document.getElementById('user');
     login.setAttribute('href','sign_in.html');
     // console.log( u );
     login.innerHTML = "Войти или Зарегестрироваться";
-    u.appendChild( login );
+    // u.appendChild( login );
   } else {
     var u = document.getElementById('user');
     var login = document.createElement("button");
