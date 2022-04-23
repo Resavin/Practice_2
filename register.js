@@ -1,5 +1,36 @@
 baseurl = 'http://130.162.173.167/api/'
 
+
+function is_login(){
+  var token = localStorage.getItem('token');
+  var name = localStorage.getItem('name');
+  if( token == null || token == '' ){
+    return false
+  }else{
+    let url = baseurl + 'user';
+    axios.get(url,{
+      headers: {
+        'Authorization':'Token ' + localStorage.getItem('token')
+      }
+    }).then(function(r){
+      if( r.status == 200 ){
+        if( r['data'].status_code == 200 ){
+          // console.log( r );
+          if( r['data']['username'] == name ){
+            return true;
+          }
+        }else{
+          return false;
+        }
+      }else{
+        return false;
+      }
+    });
+  }
+
+}
+
+
 function getAllUrlParams(url) {
 
   var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
@@ -60,7 +91,7 @@ function check_pass( r = 0 ){
   passw = document.getElementById('passw').value;
   passw_2 = document.getElementById('passw_2').value;
   if( passw != '' && passw_2 != '' ){
-    console.log(passw == passw_2);
+    //console.log(passw == passw_2);
     if( passw != passw_2 ){
       document.getElementById('passw').setCustomValidity('Пароли должны совпадать');
       document.getElementById('passw_2').setCustomValidity('Пароли должны совпадать');
@@ -113,6 +144,17 @@ function check_login() {
   }
 }
 
+function check_username() {
+  login = document.getElementById('username').value;
+  if( login == '' ){
+    document.getElementById('username').setCustomValidity('Логин это обязательное поле');
+    document.getElementById('err_username').innerHTML = "Логин это обязательное поле";
+  }else{
+    document.getElementById('username').setCustomValidity('');
+    document.getElementById('err_username').innerHTML = "";
+  }
+}
+
 
 
 function reg(){
@@ -127,7 +169,7 @@ function reg(){
     check_login();
     check_pass( 1 );
     check_email();
-                            param = {};
+    param = {};
     param['username'] = login;
     param['email'] = email;
     param['password'] = passw;
@@ -142,16 +184,17 @@ function reg(){
     }
     let url = baseurl + 'auth/register'
     axios.post( url , param).then( function(r){
-      console.log("BRUH FOR TEST");
-      console.log(r);
+      //console.log("BRUH FOR TEST");
+      //console.log(r);
       if( r.status == 200 ){
         if( r['data'].status_code == 200 ){
           localStorage.setItem( 'token', r['data']['data']['token'] );
           localStorage.setItem( 'name', r['data']['data']['users']['username'] );
-          ret_url = getAllUrlParams['r'];
+          ret_url = getAllUrlParams()['r'];
           if( ret_url == '' || ret_url == undefined ){
             ret_url = 'test.html'
           }
+          //console.log(ret_url);
           window.location.href = ret_url;
         }else{
           document.getElementById('err_api').innerHTML = r['data']['error'];
@@ -165,5 +208,10 @@ function reg(){
     check_pass( 1 );
     check_email();
   }
+
+}
+
+window.onload = function() {
+  console.log(is_login());
 
 }

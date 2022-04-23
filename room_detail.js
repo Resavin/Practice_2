@@ -1,31 +1,20 @@
-baseurl = 'http:
+baseurl = 'http://130.162.173.167/api/'
 
 function getAllUrlParams(url) {
-
   var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
-
   var obj = {};
-
   if (queryString) {
-
     queryString = queryString.split('#')[0];
-
         var arr = queryString.split('&');
-
     for (var i = 0; i < arr.length; i++) {
             var a = arr[i].split('=');
-
             var paramName = a[0];
       var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
-
             paramName = paramName.toLowerCase();
       if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
-
             if (paramName.match(/\[(\d+)?\]$/)) {
-
                 var key = paramName.replace(/\[(\d+)?\]/, '');
         if (!obj[key]) obj[key] = [];
-
                 if (paramName.match(/\[\d+\]$/)) {
                     var index = /\[(\d+)\]/.exec(paramName)[1];
           obj[key][index] = paramValue;
@@ -44,7 +33,6 @@ function getAllUrlParams(url) {
       }
     }
   }
-
   return obj;
 }
 
@@ -76,7 +64,7 @@ function page_content(){
           var image = document.createElement('img');
           image.setAttribute( 'height', '100' );
           image.setAttribute( 'src', r['data']['data']['images'][i] );
-                    images.appendChild( image );
+          images.appendChild( image );
         }
 
         amenities.innerHTML = "Удобства<br/>";
@@ -121,7 +109,8 @@ function page_content(){
               const picker = new easepick.create({
                 element: document.getElementById('datepicker_start'),
                 css: [
-                  'https:                  'https:                ],
+                  "https://cdn.jsdelivr.net/npm/@easepick/bundle@1.1.5/dist/index.css"
+                ],
                 setup(picker) {
                   picker.on('select', (e) => {
                     const { view, date, target } = e.detail;
