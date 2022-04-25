@@ -2,7 +2,7 @@
 <html>
 <head>
   <link href="dist/output.css" rel="stylesheet">
-  <!-- <link href="dist/bodycenter.css" rel="stylesheet"> -->
+  <link href="dist/bodycenter.css" rel="stylesheet">
 
   <meta charset="UTF-8">
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
@@ -14,36 +14,44 @@
       <script type="text/javascript" src="user.js"></script>
       <script type="text/javascript" src="login.js"></script>
       <title> Гостиница "Клык моржа" </title>
-    </head>
+
+</head>
     <body class="bg-Black">
 
       <div class="flex flex-col items-center font-sans text-xl text-Green font-bold">
-       <div id="footer">
-        <img class="mx-24" src="walrusBlue.png" height="164">
-        <div class="text-3xl text-Blue">  Гостиница "Клык моржа"  </div>
-        <div class="italic mt-5  flex flex-col items-center text-Blue"> Добро пожаловать сюда, </div>
-        <div class="italic text-Blue"> здесь рады даже незалогиненым </div>
-        <div> <a id="user" class="flex-col items-center  hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[10%] hover:grayscale-0 mt-10"> </a>   </div> 
-         <a class="flex-col items-center hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[10%] hover:grayscale-0 mt-10"> т</a> 
-         <a class="flex-col items-center hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[10%] hover:grayscale-0 mt-10"> Приве</a>
-      </div>
+        <div id="footer">
+          <div id="change">
+            <img class="mx-24" src="walrusBlue.png" height="164">
+            <div class="text-3xl text-Blue">  Гостиница "Клык моржа"  </div>
+            <div class="italic mt-5  flex flex-col items-center text-Blue"> Добро пожаловать сюда, </div>
+            <div class="italic  flex flex-col items-center text-Blue"> здесь рады даже незалогиненым </div>
+          </div>
 
-      <input type="date" id="start_date" >
-      <input type="date" id="end_date" >
-
-      <div>
-       <input type="checkbox" id="guaranteed_booking" onchange="listRooms()">
-       <label for="guaranteed_booking">Дополнительный день на въезд</label>
-     </div>
+            <div class=" flex-col items-center flex"> <a id="roomlist" class="px-3 flex-col items-center hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline hover:grayscale-0 mt-10" href="index.html"> Список номеров </a> </div>
+            <div class="mt-1 flex-col items-center flex"> <a id="user" class="px-3  hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0 "> </a> </div> 
+            <div class="mt-1 flex-col items-center flex"> <a id="user2" class="px-3 cursor-pointer hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0 "> </a> </div> 
+            <!-- <div> <a class="flex-col items-center hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[10%] hover:grayscale-0 mt-10"> </a> </div> -->
+            <div class="mt-10 flex-col items-center flex text-sm text-Grey italic">Версия 0.143 </div>
+       </div>
 
 
-     <input type="number" id="count" placeholder="Количество персон" onchange="listRooms()" >
+       <!-- <div> -->
+         <!-- <input type="date" id="start_date" > -->
+         <!-- <input type="date" id="end_date" > -->
 
-     <div id="rooms">
-       <ol id = "roomList">
-       </ol>
-     </div>
-   </div>
+         <!-- <div> -->
+          <!-- <input type="checkbox" id="guaranteed_booking" onchange="listRooms()"> -->
+          <!-- <label for="guaranteed_booking">Дополнительный день на въезд</label> -->
+        <!-- </div> -->
 
- </body>
+        <!-- <input type="number" id="count" placeholder="Количество персон" onchange="listRooms()" > -->
+      <!-- </div> -->
+
+<!--      <div id="rooms">
+       <ol id = "roomList"> </ol>
+     </div> -->
+
+    </div>
+
+   </body>
  </html>

@@ -2,24 +2,48 @@
 <html>
   <head>
     <link href="dist/output.css" rel="stylesheet">
+    <link href="dist/bodycenter.css" rel="stylesheet">
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <!-- <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="login.js"></script>
-    <title> Гостиница "Клык моржа" </title>
- </head>
- <body >
-   <h2>Войти</h2>
-   <input id="login" type="text" placeholder="логин"><div id="err_login"></div><br/>
-   <input id="passw" type="password" placeholder="пароль"><div id="err_passw"></div><br/>
-   <button type="button" name="button" onclick="login()" >Войти</button>
+    <title> Вход в "Клык моржа" </title>
+  </head>
 
-   <div id="err_api"></div>
-   <div id="to_reg">
-     <a href="sign_up.html">Зарегестрироваться</a>
-   </div>
 
- </body>
+ <body class="bg-Black font-sans">
+        <div class="flex flex-col items-center justify-center">
+            <img src="walrusBlue.png" width="200" height="164">
+            <div class="text-Blue text-2xl font-bold mb-3">
+              Вход, введите свой ник
+            </div>
+            <input label="Введите своё имя пользователя" id="login"
+                   type="text" placeholder="Ник"  
+                   class="text-sm text-Black w-96 
+                          px-4 py-4 h-2 border 
+                          border-gray-200 rounded mb-2" />
+                          <div id="err_login" class="text-Cyan"></div>
+            
+            <input aria-label="Введите свой пароль"  id="passw"
+                   type="password" placeholder="Пасс вд"
+                   class="text-sm text-gray-base w-96 
+                          py-4 px-4 h-2 border border-gray-200 
+                          rounded mb-2" />
+                          <div id="err_passw" class="text-Cyan"></div>
+
+            <button type="button" name="button" onclick="login()"
+                    class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-2 h-7 w-96 mt-4">
+                Ок, перекинь меня на фиолетового моржа
+            </button>
+              <div id="err_api" class="mb-5 text-Cyan"></div>
+
+           <div id="to_reg">
+             <a href="sign_up.html" class="text-Grey no-underline active:text-Cyan mt-5 mb-5">Может вы хотите зарегистрироваться?</a>
+           </div>
+            <a href="zaloginen.html" class="text-Grey no-underline mt-1 active:text-Cyan"> Или неужели вы забыли свой пароль? </a>
+
+        </div>
+    </body>
 </html>

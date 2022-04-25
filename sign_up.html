@@ -2,33 +2,71 @@
 <html>
   <head>
     <link href="dist/output.css" rel="stylesheet">
+    <link href="dist/bodycenter.css" rel="stylesheet">
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+   <!--  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="register.js"></script>
-    <title> Гостиница "Клык моржа" </title>
- </head>
- <body >
-   <h2>Войти</h2>
+    <title> Регистрация в "Клыке моржа" </title>
+  </head>
 
-
-   <input id="login" type="text" placeholder="логин" onchange="check_login()" required><div id="err_login"></div><br/>
-   <input id="passw" type="password" placeholder="пароль" onchange="check_pass()" required><div id="err_passw"></div><br/>
-   <input id="passw_2" type="password" placeholder="повторите пароль" onchange="check_pass()" required><div id="err_passw_2"></div><br/>
-
-   <b>Как с Вами связаться?</b><br/>
-   <input id="email" type="text" placeholder="почта" onchange="check_email()" required><div id="err_email"></div><br/>
-   <input id="phone" type="tel" name="phone_number" list="tel-list" placeholder="телефон" ><div id="err_phone"></div><br/>
-
-   <b>Как к Вам обращаться?</b><br/>
-   <input id="first_name" type="text" placeholder="Имя"><div id="err_first_name"></div><br/>
-   <input id="second_name" type="text" placeholder="Фамилия"><div id="err_second_name"></div><br/>
-   <!-- <input id="third_name" type="text" placeholder="Отчество"><br/> -->
-   <div id="err_api"></div>
-   <input type="submit" onclick="reg()" value="Зарегестрироваться">
-   <!-- <button type="button" name="button" onclick="reg()" >Зарегестрироваться</button> -->
-
- </body>
+ <body class="bg-Black font-sans">
+        <div class="flex flex-col lg:mt-24 items-center justify-center">
+            <img src="walrusBlue.png" width="200" height="164">
+            <div class="text-Blue text-2xl font-bold">
+              Регистрация 
+            </div>  
+            <div class="text-Blue text-2xl font-bold mb-3">
+              Введите свой ник и не только
+            </div>
+  
+            <!-- <form class="flex flex-col items-center justify-center"> -->
+                <input label="Введите своё имя пользователя" id="login"
+                       type="text" placeholder="Ник" onchange="check_login()" required
+                       class="text-md border-solid rounded border-Purple focus:font-bold text-Black w-96 font-medium
+                              py-4 px-4 h-2 rounded mb-2"/>
+                              <div id="err_login" class="text-Cyan mb-1 -mt-1"></div>
+              <input aria-label="Введите свой адрес электронной почты" id="email" 
+                       type="text" placeholder="Электропочта" onchange="check_email()"  required
+                       class="text-md border-solid rounded border-Purple focus:font-bold text-Black w-96 font-medium
+                              py-4 px-4 h-2 rounded mb-2"/>
+                              <div id="err_email" class="text-Cyan mb-1 -mt-1"></div>
+                <input aria-label="Введите свой пароль" id="passw"
+                       type="password" placeholder="Пасс вд" onchange="check_pass()" required
+                       class="text-md border-solid rounded border-Purple focus:font-bold text-Black w-96 font-medium
+                              py-4 px-4 h-2 rounded mb-2" />
+                              <div id="err_passw" class="text-Cyan mb-1 -mt-1"></div>
+                <input aria-label="Введите свой пароль второй раз" id="passw_2" 
+                       type="password" placeholder="Пасс вд 2" onchange="check_pass()" required
+                       class="text-md border-solid rounded border-Purple focus:font-bold text-Black w-96 font-medium 
+                              py-4 px-4 h-2 rounded mb-2" />
+                              <div id="err_passw_2" class="text-Cyan mb-1 -mt-1"></div>
+                <input aria-label="Введите своё имя" id="first_name"
+                       type="text" placeholder="Имя" 
+                       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium 
+                              py-4 px-4 h-2 rounded mb-2" />
+                              <div id="err_first_name" class="text-Cyan mb-1 -mt-1"></div>
+                <input aria-label="Введите свою фамилию"  id="second_name"
+                       type="text" placeholder="Фамилия"
+                       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium 
+                              py-4 px-4 h-2 rounded mb-2" />
+                              <div id="err_second_name" class="text-Cyan mb-1 -mt-1"></div>
+              <input aria-label="Введите свой номер телефона" id="phone" name="phone_number"
+                       type="tel" placeholder="Мобила" list="tel-list"  
+                       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium 
+                              py-4 px-4 h-2 rounded mb-2" />
+                              <div id="err_phone" class="text-Cyan mb-1 -mt-1"></div>
+  
+                <div id="err_api" class="text-Cyan mb-1 -mt-1"></div>
+                <input type="submit" onclick="reg()" value=" Ок, перекинь меня дальше"
+                        class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
+            <!-- </form> -->
+          <div class="text-Grey flex-col items-center flex lg:mt-12"> Поля с фиолетовой рамкой обязательны для заполнения; кроме того, </div>
+          <div class="text-Grey flex-col items-center flex"> хоть вы и можете ввести любой пароль, мы советуем выбирать надёжный </div>
+          <a href="test.html" class="px-4 flex-col items-center flex text-Green  active:text-Cyan  no-underline grayscale-[30%] hover:grayscale-0 mt-2"> Выход отсюда </a>
+	  
+        </div>
+    </body>
 </html>

@@ -27,9 +27,6 @@ function change_pass(){
 
 }
 
-
-
-
 function edit_user(){
 
   document.getElementById('username').removeAttribute('readonly');
@@ -42,7 +39,6 @@ function edit_user(){
   document.getElementById('edit_user').style.display = "none";
 
 }
-
 
 function save_user(){
   let url = baseurl + 'user';
@@ -88,7 +84,6 @@ function save_user(){
     check_username();
     check_email();
   }
-
 
 }
 

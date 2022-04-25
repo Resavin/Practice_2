@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="dist/output.css" rel="stylesheet">
+    <link href="dist/bodycenter.css" rel="stylesheet">
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
@@ -11,51 +12,64 @@
     <script type="text/javascript" src="register.js"></script>
     <script type="text/javascript" src="user.js"></script>
     <script type="text/javascript" src="login.js"></script>
-    <title> Гостиница "Клык моржа" </title>
+    <title> Профиль "Клык моржа" </title>
  </head>
- <body >
-   <div id="footer">
-     <h2>ЛОГО</h2>
-     Гостинница Клык моржа
+ <body class="bg-Black text-Yellow text-lg font-sans font-bold items-center flex flex-col">
+   <div id="footer" class="items-center italic flex flex-col">
+     <img src="walrusYellow.png" width="200">
+     <div > Добро пожаловать </div>
+     <div> в свой профиль, челик </div>
      <h5 id="user" > </h5>
    </div>
 
-   <div id="user_info">
-     <div id="username_head">Логин</div>
-     <input id="username" type="text" onchange="check_username()" readonly="readonly" required>
-     <div id="err_username"></div><br/>
+   <div id="user_info" class="-mt-5 items-center flex flex-col">
+     <div id="username_head"> Ник </div>
+     <input id="username" type="text" onchange="check_username()" readonly="readonly" required
+      class="border-Purple text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_username"></div>
 
      <div id="email_head">Почта</div>
-     <input id="email" type="text" onchange="check_email()" readonly="readonly" required>
-     <div id="err_email"></div><br/>
+     <input id="email" type="text" onchange="check_email()" readonly="readonly" required
+      class="border-Purple text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_email"></div>
 
      <div id="first_name_head">Имя</div>
-     <input id="first_name" type="text" readonly="readonly">
-     <div id="err_first_name"></div><br/>
+     <input id="first_name" type="text" readonly="readonly"
+      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_first_name"></div>
 
      <div id="second_name_head">Фамилия</div>
-     <input id="second_name" type="text" readonly="readonly">
-     <div id="err_second_name"></div><br/>
+     <input id="second_name" type="text" readonly="readonly"
+      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_second_name"></div>
 
      <div id="phone_head">Телефон</div>
-     <input id="phone" type="tel" name="phone_number" list="tel-list" readonly="readonly">
-     <div id="err_phone"></div><br/>
+     <input id="phone" type="tel" name="phone_number" list="tel-list" readonly="readonly"
+      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_phone"></div>
 
-     <div id="error" ></div><br/>
+     <div id="error" ></div>
 
-     <input id="edit_user" type="submit" onclick="edit_user()" value="Изменить сведения о себе"><br/>
-     <input id="save_user" type="submit" onclick="save_user()" value="Сохранить сведения о себе"><br/>
+     <input id="edit_user" type="submit" onclick="edit_user()" value="Изменить сведения о себе" 
+     class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
+     <input id="save_user" type="submit" onclick="save_user()" value="Сохранить сведения о себе" 
+     class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
 
-     <div id="password_head">Смена пароля</div>
+     <div id="password_head" class=" items-center flex flex-col mt-4">Смена пароля</div>
      <div id="password">
-       <input id="passw" type="password" placeholder="введите ноый пароль" onchange="check_pass()" required><div id="err_passw"></div><br/>
-       <input id="passw_2" type="password" placeholder="повторите пароль" onchange="check_pass()" required><div id="err_passw_2"></div><br/>
-       <input type="submit" onclick="change_pass()" value="Изменить пароль">
+       <input id="passw" type="password" placeholder="введите ноый пароль" onchange="check_pass()" required 
+       class="border-Grey text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0 bg-Grey mb-2 rounded">
+       <div id="err_passw" ></div>
+       <input id="passw_2" type="password" placeholder="повторите пароль" onchange="check_pass()" required 
+       class="border-Grey text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0 bg-Grey rounded">
+       <div id="err_passw_2 "></div>
+       <input type="submit" onclick="change_pass()" value="Изменить пароль" 
+       class="ml-5 bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
      </div>
 
-     <div id="err_password"></div><br/>
+     <div id="err_password"></div>
 
-     <!-- <div id="username"></div><div id="err_username"></div><br/> -->
+     <!-- <div id="username"></div><div id="err_username"></div> -->
    </div>
 
  </body>

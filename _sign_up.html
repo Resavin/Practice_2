@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="dist/output.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="register.js"></script>
+    <title> Гостиница "Клык моржа" </title>
+ </head>
+ <body >
+   <h2>Регистрация</h2>
+
+
+   <input id="login" type="text" placeholder="логин" onchange="check_login()" required><div id="err_login"></div><br/>
+   <input id="passw" type="password" placeholder="пароль" onchange="check_pass()" required><div id="err_passw"></div><br/>
+   <input id="passw_2" type="password" placeholder="повторите пароль" onchange="check_pass()" required><div id="err_passw_2"></div><br/>
+
+   <b>Как с Вами связаться?</b><br/>
+   <input id="email" type="text" placeholder="почта" onchange="check_email()" required><div id="err_email"></div><br/>
+   <input id="phone" type="tel" name="phone_number" list="tel-list" placeholder="телефон" ><div id="err_phone"></div><br/>
+
+   <b>Как к Вам обращаться?</b><br/>
+   <input id="first_name" type="text" placeholder="Имя"><div id="err_first_name"></div><br/>
+   <input id="second_name" type="text" placeholder="Фамилия"><div id="err_second_name"></div><br/>
+   <!-- <input id="third_name" type="text" placeholder="Отчество"><br/> -->
+   <div id="err_api"></div>
+   <input type="submit" onclick="reg()" value="Зарегестрироваться">
+   <!-- <button type="button" name="button" onclick="reg()" >Зарегестрироваться</button> -->
+
+ </body>
+</html>
