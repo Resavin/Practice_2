@@ -67,13 +67,16 @@ function save_user(){
 
     //data['username'] = username;
     //console.log(phone);
+
+    console.log(data);
+
     axios.put(url, data, header).then(function(r){
       //console.log(r);
       if( r['status'] == 200 ){
         if( r['data']['status_code'] == 200 ){
           document.getElementById('error').innerHTML = '';
           localStorage.setItem( 'name', r['data']['data']['username'] );
-          window.location.href = 'test.html';
+          window.location.href = 'user.html?user_login=' + r['data']['data']['username'];
         }else{
           document.getElementById('error').innerHTML = r['data']['error'];
           //getElementsByClassName('className')
@@ -126,6 +129,7 @@ function page_content(){
   } ).then(function(r){
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
+        console.log(r);
         document.getElementById('username').value = r['data']['data']['username'];
 
         user = r['data']['data'];

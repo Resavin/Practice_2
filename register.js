@@ -190,6 +190,7 @@ function reg(){
         if( r['data'].status_code == 200 ){
           localStorage.setItem( 'token', r['data']['data']['token'] );
           localStorage.setItem( 'name', r['data']['data']['users']['username'] );
+          //localStorage.setItem( 'id', r['data']['data']['users']['id'] );
           ret_url = getAllUrlParams()['r'];
           if( ret_url == '' || ret_url == undefined ){
             ret_url = 'test.html'

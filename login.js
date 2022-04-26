@@ -14,6 +14,7 @@ function login(){
       if( r['data'].status_code == 200 ){
         localStorage.setItem( 'token', r['data']['data']['token'] );
         localStorage.setItem( 'name', r['data']['data']['user']['username'] );
+        //localStorage.setItem( 'id', r['data']['data']['user']['id'] );
         window.location.href = 'test.html';
       }else{
         document.getElementById('err_api').innerHTML = r['data']['error'];
@@ -36,6 +37,7 @@ function logout(){
   }).then(function(r){
     localStorage.removeItem('token');
     localStorage.removeItem('name');
+    //localStorage.removeItem('id');
     window.location.href = 'test.html';
   });
 

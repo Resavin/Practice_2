@@ -20,6 +20,7 @@
      <div > Добро пожаловать </div>
      <div> в свой профиль, челик </div>
      <h5 id="user" > </h5>
+     <a id="user2" class="px-3 cursor-pointer hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan no-underline grayscale-[30%] hover:grayscale-0 "> </a> 
    </div>
 
    <div id="user_info" class="-mt-5 items-center flex flex-col">
@@ -50,20 +51,20 @@
 
      <div id="error" ></div>
 
-     <input id="edit_user" type="submit" onclick="edit_user()" value="Изменить сведения о себе" 
+     <input id="edit_user" type="submit" onclick="edit_user()" value="Изменить сведения о себе"
      class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
-     <input id="save_user" type="submit" onclick="save_user()" value="Сохранить сведения о себе" 
+     <input id="save_user" type="submit" onclick="save_user()" value="Сохранить сведения о себе"
      class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
 
      <div id="password_head" class=" items-center flex flex-col mt-4">Смена пароля</div>
      <div id="password">
-       <input id="passw" type="password" placeholder="введите ноый пароль" onchange="check_pass()" required 
+       <input id="passw" type="password" placeholder="введите ноый пароль" onchange="check_pass()" required
        class="border-Grey text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0 bg-Grey mb-2 rounded">
        <div id="err_passw" ></div>
-       <input id="passw_2" type="password" placeholder="повторите пароль" onchange="check_pass()" required 
+       <input id="passw_2" type="password" placeholder="повторите пароль" onchange="check_pass()" required
        class="border-Grey text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0 bg-Grey rounded">
        <div id="err_passw_2 "></div>
-       <input type="submit" onclick="change_pass()" value="Изменить пароль" 
+       <input type="submit" onclick="change_pass()" value="Изменить пароль"
        class="ml-5 bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
      </div>
 
