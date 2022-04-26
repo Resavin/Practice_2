@@ -95,7 +95,7 @@ function check_pass( r = 0 ){
     if( passw != passw_2 ){
       document.getElementById('passw').setCustomValidity('Пароли должны совпадать');
       document.getElementById('passw_2').setCustomValidity('Пароли должны совпадать');
-      document.getElementById('err_passw_2').innerHTML = "Пароли должны совпадать";
+      document.getElementById('err_passw_2').innerHTML = "<div class='mt-1 mb-1 font-sans font-bold text-Purple'> Пароли должны совпадать</div>"; 
     }else{
       document.getElementById('passw').setCustomValidity('');
       document.getElementById('passw_2').setCustomValidity('');
@@ -109,7 +109,7 @@ function check_pass( r = 0 ){
       if( passw_2 == '' ){
         document.getElementById('passw_2').setCustomValidity('Пароль это обязательное поле');
       }
-      document.getElementById('err_passw_2').innerHTML = "Пароль это обязательное поле";
+      document.getElementById('err_passw_2').innerHTML = "<div class='mt-1 mb-1 font-sans font-bold text-Purple'> Пароль это обязательное поле </div>";
     }
 
   }
@@ -125,11 +125,11 @@ function check_email(){
       document.getElementById('err_email').innerHTML = "";
     }else{
       document.getElementById('email').setCustomValidity('Введите корректный email');
-      document.getElementById('err_email').innerHTML = "Введите корректный email";
+      document.getElementById('err_email').innerHTML = "<div class='mt-1 mb-1 font-sans font-bold text-Purple'> Введите корректный email </div>";
     }
   }else{
     document.getElementById('email').setCustomValidity('Почта это обязательное поле');
-    document.getElementById('err_email').innerHTML = "Почта это обязательное поле";
+    document.getElementById('err_email').innerHTML = "<div class='mt-1 mb-1 font-sans font-bold text-Purple'> Почта это обязательное поле </div>";
   }
 }
 
@@ -137,7 +137,7 @@ function check_login() {
   login = document.getElementById('login').value;
   if( login == '' ){
     document.getElementById('login').setCustomValidity('Логин это обязательное поле');
-    document.getElementById('err_login').innerHTML = "Логин это обязательное поле";
+    document.getElementById('err_login').innerHTML = "<div class='mt-1 mb-1 font-sans font-bold text-Purple'> Логин это обязательное поле </div>";
   }else{
     document.getElementById('login').setCustomValidity('');
     document.getElementById('err_login').innerHTML = "";
@@ -148,7 +148,7 @@ function check_username() {
   login = document.getElementById('username').value;
   if( login == '' ){
     document.getElementById('username').setCustomValidity('Логин это обязательное поле');
-    document.getElementById('err_username').innerHTML = "Логин это обязательное поле";
+    document.getElementById('err_username').innerHTML = "<div class='mt-1 mb-1 font-sans font-bold text-Purple'> Логин это обязательное поле </div>";
   }else{
     document.getElementById('username').setCustomValidity('');
     document.getElementById('err_username').innerHTML = "";
