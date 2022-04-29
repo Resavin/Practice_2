@@ -64,7 +64,7 @@
 	width: 100px;
 }
 .number input[type="number"] {
-  border-radius: 4px;
+  
   background-color: #5d7796;
 	display: block;
 	height: 32px;
@@ -83,7 +83,7 @@
 	display: none;
 }
 .number-minus {
-  border-radius: 4px;
+
   background-color: #536b82;
 	position: absolute;
 	top: 1px;
@@ -100,7 +100,7 @@
 }
 
 .number-plus {
-  border-radius: 4px;
+
   background-color: #536b82;
 	position: absolute;
 	top: 1px;
