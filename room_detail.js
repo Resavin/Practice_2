@@ -109,7 +109,7 @@ function page_content(){
               const picker = new easepick.create({
                 element: document.getElementById('datepicker_start'),
                 css: [
-                  "https://cdn.jsdelivr.net/npm/@easepick/bundle@1.1.5/dist/index.css"
+                  'dist/date_pick.css'
                 ],
                 setup(picker) {
                   picker.on('select', (e) => {
