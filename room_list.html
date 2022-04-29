@@ -11,17 +11,16 @@
     <script type="text/javascript" src="rooms.js"></script>
     <script type="text/javascript" src="user.js"></script>
     <script type="text/javascript" src="login.js"></script>
-    <script type="text/javascript" src="rooms.js"></script>
     <title> Список номеров в "Клыке моржа" </title>
   </head>
 
   <body class="bg-Black">
 
     <div class="flex flex-col items-center font-sans text-xl text-Green font-bold">
-      <div id="footer" class="items-center italic flex flex-col">
-        <a href="test.html"><img src="walrusRed.png" width="200"></a>
-        <div > Выберите дату и количество персон </div>
-        <div> и мы предложем вам подходящие номера </div>
+      <div id="footer" class="items-center  flex flex-col">
+        <a href="test.html"><img src="whale.png" width="200"></a>
+        <div class="italic text-Grey"> Выберите дату и количество персон </div>
+        <div class="italic text-Grey"> и мы предложем вам подходящие номера </div>
         <h5 id="user" > </h5>
 
       </div>
@@ -38,9 +37,9 @@
 
 
           <div class="">
-            <div class="number">
+            <div class="number text-Blue">
             	<button class="number-minus rounded-l-lg" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
-            	<input class="rounded-lg" id="count" type="number" min="0" value="1" onchange="listRooms()" readonly>
+            	<input class="rounded-lg bg-Grey" id="count" type="number" min="0" value="1" onchange="listRooms()" readonly>
             	<button class="number-plus rounded-r-lg" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
             </div>     Кол-во персон
           </div>
