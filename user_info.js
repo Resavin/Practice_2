@@ -120,6 +120,21 @@ function page_content(){
     window.location.href = 'test.html';
   }
 
+
+  if( user_login == localStorage.getItem('name') ){
+    document.getElementById('email').style.display = "block";
+    document.getElementById('first_name').style.display = "block";
+    document.getElementById('second_name').style.display = "block";
+    document.getElementById('phone').style.display = "block";
+    document.getElementById('password').style.display = "block";
+    document.getElementById('email_head').style.display = "block";
+    document.getElementById('first_name_head').style.display = "block";
+    document.getElementById('second_name_head').style.display = "block";
+    document.getElementById('phone_head').style.display = "block";
+    document.getElementById('password_head').style.display = "block";
+    document.getElementById('edit_user').style.display = "block";
+  }
+
   url = baseurl + 'user';
 
   axios.get(url, {params:params,
@@ -136,17 +151,17 @@ function page_content(){
 
         if( localStorage.getItem('name') == r['data']['data']['username'] ){
 
-          document.getElementById('email').style.display = "block";
-          document.getElementById('first_name').style.display = "block";
-          document.getElementById('second_name').style.display = "block";
-          document.getElementById('phone').style.display = "block";
-          document.getElementById('password').style.display = "block";
-          document.getElementById('email_head').style.display = "block";
-          document.getElementById('first_name_head').style.display = "block";
-          document.getElementById('second_name_head').style.display = "block";
-          document.getElementById('phone_head').style.display = "block";
-          document.getElementById('password_head').style.display = "block";
-          document.getElementById('edit_user').style.display = "block";
+          // document.getElementById('email').style.display = "block";
+          // document.getElementById('first_name').style.display = "block";
+          // document.getElementById('second_name').style.display = "block";
+          // document.getElementById('phone').style.display = "block";
+          // document.getElementById('password').style.display = "block";
+          // document.getElementById('email_head').style.display = "block";
+          // document.getElementById('first_name_head').style.display = "block";
+          // document.getElementById('second_name_head').style.display = "block";
+          // document.getElementById('phone_head').style.display = "block";
+          // document.getElementById('password_head').style.display = "block";
+          // document.getElementById('edit_user').style.display = "block";
 
           document.getElementById('email').value = r['data']['data']['email'];
           document.getElementById('first_name').value = r['data']['data']['first_name'];
