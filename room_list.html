@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="dist/output.css" rel="stylesheet">
+    <link href="dist/bodycenter.css" rel="stylesheet">
+    <link href="dist/date_picker.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="date_pick.js"></script>
+    <script type="text/javascript" src="rooms.js"></script>
+    <script type="text/javascript" src="user.js"></script>
+    <script type="text/javascript" src="login.js"></script>
+    <script type="text/javascript" src="rooms.js"></script>
+    <title> Список номеров в "Клыке моржа" </title>
+  </head>
+
+  <body class="bg-Black">
+
+    <div class="flex flex-col items-center font-sans text-xl text-Green font-bold">
+      <div id="footer" class="items-center italic flex flex-col">
+        <a href="test.html"><img src="walrusRed.png" width="200"></a>
+        <div > Выберите дату и количество персон </div>
+        <div> и мы предложем вам подходящие номера </div>
+        <h5 id="user" > </h5>
+
+      </div>
+<!-- items-center -->
+      <div class="data_picker flex flex-col  pb-4 rounded-lg">
+        <input type="date" id="start_date" >
+        <input type="date" id="end_date" >
+        <br/>
+
+        <div class="flex justify-around ">
+          <input onchange="listRooms()" class="custom-checkbox absolute left-0 top-0" type="checkbox" id="guaranteed_booking">
+          <label for="guaranteed_booking">Доп. день на въезд</label>
+          <!-- <br/> -->
+
+
+          <div class="">
+            <div class="number">
+            	<button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
+            	<input id="count" type="number" min="0" value="1" onchange="listRooms()" readonly>
+            	<button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+            </div>     Кол-во персон
+          </div>
+
+
+        </div>
+
+
+
+      </div>
+
+
+      <div id="roomList">
+
+
+    </div>
+
+  </body>
+
+
+
+</html>

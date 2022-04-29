@@ -7,22 +7,42 @@ function login(){
   params['username'] = login;
   params['password'] = passw;
 
-  //console.log(baseurl + 'auth/login');
-  axios.post(baseurl + 'auth/login', params).then(function(r) {
-    //console.log(r);
-    if( r.status == 200 ){
-      if( r['data'].status_code == 200 ){
-        localStorage.setItem( 'token', r['data']['data']['token'] );
-        localStorage.setItem( 'name', r['data']['data']['user']['username'] );
-        //localStorage.setItem( 'id', r['data']['data']['user']['id'] );
-        window.location.href = 'test.html';
-      }else{
-        document.getElementById('err_api').innerHTML = r['data']['error'];
-      }
 
+
+  if( login != '' && passw != '' ){
+    document.getElementById('err_login').innerHTML = "";
+    document.getElementById('err_passw').innerHTML = "";
+    axios.post(baseurl + 'auth/login', params).then(function(r) {
+      //console.log(r);
+      if( r.status == 200 ){
+        if( r['data'].status_code == 200 ){
+          localStorage.setItem( 'token', r['data']['data']['token'] );
+          localStorage.setItem( 'name', r['data']['data']['user']['username'] );
+          //localStorage.setItem( 'id', r['data']['data']['user']['id'] );
+          window.location.href = 'test.html';
+        }else{
+          document.getElementById('err_api').innerHTML = r['data']['error'];
+        }
+
+      }
+    });
+  }else{
+    if( login == '' ){
+      document.getElementById('err_login').innerHTML = "Это обязательное поле";
+    }else{
+      document.getElementById('err_login').innerHTML = "";
     }
-    //code here
-});
+    if( passw == '' ){
+      document.getElementById('err_passw').innerHTML = "Это обязательное поле";
+    }else{
+      document.getElementById('err_passw').innerHTML = "";
+    }
+  }
+
+
+
+
+
 }
 
 
