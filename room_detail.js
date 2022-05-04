@@ -107,14 +107,14 @@ function page_content(){
                   return new DateTime(d, 'YYYY-MM-DD');
               });
               const picker = new easepick.create({
-                element: document.getElementById('datepicker_start'),
+                element: document.getElementById('start_date'),
                 css: [
                   'dist/date_pick.css'
                 ],
                 setup(picker) {
                   picker.on('select', (e) => {
                     const { view, date, target } = e.detail;
-                                                            calculate_cost();
+                    calculate_cost();
                   });
                 },
                 grid: 1,
@@ -123,7 +123,7 @@ function page_content(){
                 lang: "ru-RU",
                 plugins: ['RangePlugin', 'LockPlugin'],
                 RangePlugin: {
-                  elementEnd: "#datepicker_end",
+                  elementEnd: "#end_date",
                   tooltipNumber(num) {
                     return num - 1;
                   },
@@ -151,14 +151,8 @@ function page_content(){
 
 
               });
-              document.getElementById('datepicker_start').style.display = "none";
-              document.getElementById('datepicker_end').style.display = "none";
-
-
-
-
-
-
+              document.getElementById('start_date').style.display = "none";
+              document.getElementById('end_date').style.display = "none";
 
 
       }
@@ -177,8 +171,8 @@ function page_content(){
 
 function calculate_cost(){
 
-  let start_date = document.getElementById('datepicker_start').value;
-  let end_date = document.getElementById('datepicker_end').value;
+  let start_date = document.getElementById('start_date').value;
+  let end_date = document.getElementById('end_date').value;
   var params = {};
 
   if( start_date != '' ){
@@ -194,11 +188,20 @@ function calculate_cost(){
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
         cost = document.getElementById('cost');
-                cost.innerHTML = "Это будет стоить " + r['data']['data']['cost'] + " денег"
+                cost.innerHTML = "Это будет стоить " + r['data']['data']['cost'] + " денег";
+
+        let book = document.createElement('a');
+        book.setAttribute('href','booking.html');
+        book.innerHTML = "Забронировать";
+
+        cost.appendChild(book);
       }
     }
   });
 
-
-
 };
+
+
+function paid() {
+
+}

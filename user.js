@@ -1,5 +1,16 @@
 baseurl = 'http://130.162.173.167/api/'
 
+function is_login() {
+  var token = localStorage.getItem('token');
+  var name = localStorage.getItem('name');
+  if( token == null || name == null ){
+    return false;
+  }else{
+    return true;
+  }
+}
+
+
 function is_user(){
 
   var token = localStorage.getItem('token');

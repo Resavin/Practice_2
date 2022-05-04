@@ -44,25 +44,60 @@ function addRooms(rooms){
         var cost = document.createElement("div");
         var images = document.createElement("img");
         var type = document.createElement("div");
+
+        var right = document.createElement("div");
         // var roomName = document.createElement("div");
 
         roomName.innerHTML = '<b>' + rooms['data']['data'][i]['title'] + '</b>';
         roomName.setAttribute('href','room_detail.html?room=' + rooms['data']['data'][i]['id'] );
 
         cost.innerHTML = 'Стоимость ' + rooms['data']['data'][i]['cost'];
-        images.setAttribute( 'height', '100' );
+
         images.setAttribute( 'src', rooms['data']['data'][i]['images'] );
         type.innerHTML = 'Крутость ' + rooms['data']['data'][i]['type'];
         capasity.innerHTML = 'Вместимость ' + rooms['data']['data'][i]['capacity'];
 
 
-        room.appendChild( roomName );
-        room.appendChild( cost );
-        room.appendChild( type );
-        room.appendChild( capasity );
+
+        roomName.setAttribute('class','no-underline text-blue-600');
+        room.setAttribute('class','grid grid-rows-2 grid-flow-col gap-4 py-8');
+        images.setAttribute('class','lg:row-span-2 md:col-span-1 object-contain h-48 w-96');
+        right.setAttribute('class','lg:row-span-1 md:col-span-2');
+
+        right.appendChild( roomName );
+        right.appendChild( cost );
+        right.appendChild( type );
+        right.appendChild( capasity );
+
         room.appendChild( images );
+        room.appendChild( right );
 
         root.appendChild( room );
+
+
+        // right.setAttribute('class','center');
+        // images.setAttribute('class','object-contain h-48 w-96')
+        // room.setAttribute('class','flex list-none py-8');
+
+        // images.setAttribute('class','object-contain h-48 w-96');
+        // right.setAttribute('class','flex items-center 	');
+        // room.setAttribute('class','w-96  list-none py-8');
+
+
+
+
+
+        // room.setAttribute('class','grid grid-rows-2 grid-flow-col gap-4 py-8');
+        // images.setAttribute('class','row-span-2 object-contain h-48 w-96');
+        // right.setAttribute('class','row-span-1');
+
+
+        // room.setAttribute('class','grid grid-rows-2 grid-flow-col gap-4 py-8');
+        // images.setAttribute('class','col-span-1 object-contain h-48 w-96');
+        // right.setAttribute('class','col-span-2');
+
+
+
 
         //console.log( rooms['data']['data'][i] )
       }

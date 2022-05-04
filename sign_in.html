@@ -8,7 +8,9 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <!-- <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="to_reg.js"></script>
     <script type="text/javascript" src="login.js"></script>
+
     <title> Вход в "Клык моржа" </title>
   </head>
 
@@ -35,16 +37,16 @@
 
             <button type="button" name="button" onclick="login()"
                     class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-2 h-7 w-96 mt-4">
-                Ок, перекинь меня на фиолетового моржа
+                Войти
             </button>
               <div id="err_api" class="mb-5 text-Cyan"></div>
 
-           <div id="to_reg">
-             <a href="sign_up.html" class="text-Grey no-underline active:text-Cyan mt-5 mb-5">Может вы хотите зарегистрироваться?</a>
+           <div>
+             <a id="to_reg"  class="text-Green  active:text-Cyan no-underline  mt-5 mb-5">Может вы хотите зарегистрироваться?</a>
            <!-- </div>
             <a href="zaloginen.html" class="text-Grey no-underline mt-1 active:text-Cyan"> Или неужели вы забыли свой пароль? </a> -->
             <!-- пока хз как восстанавливать пароль -->
 
-        </div>
+           </div>
     </body>
 </html>

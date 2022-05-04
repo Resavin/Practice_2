@@ -95,7 +95,7 @@ function check_pass( r = 0 ){
     if( passw != passw_2 ){
       document.getElementById('passw').setCustomValidity('Пароли должны совпадать');
       document.getElementById('passw_2').setCustomValidity('Пароли должны совпадать');
-      document.getElementById('err_passw_2').innerHTML = "<div class='mt-1 mb-1 font-sans font-bold text-Purple'> Пароли должны совпадать</div>"; 
+      document.getElementById('err_passw_2').innerHTML = "<div class='mt-1 mb-1 font-sans font-bold text-Purple'> Пароли должны совпадать</div>";
     }else{
       document.getElementById('passw').setCustomValidity('');
       document.getElementById('passw_2').setCustomValidity('');
@@ -213,6 +213,7 @@ function reg(){
 }
 
 window.onload = function() {
-  console.log(is_login());
-
+  let url = 'sign_in.html' + window.location.search;
+  a = document.getElementById('to_log');
+  a.setAttribute('href', url);
 }

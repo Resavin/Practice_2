@@ -3,6 +3,7 @@
   <head>
     <link href="dist/output.css" rel="stylesheet">
     <link href="dist/bodycenter.css" rel="stylesheet">
+    <link href="dist/date_picker.css" rel="stylesheet">
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
@@ -19,7 +20,7 @@
  <body class="bg-Black ">
 
    <div id="footer">
-     <img src="walrusRed.png" width="200">
+     <a href="test.html"><img src="walrusRed.png" width="200"></a>
      <h5 id="user" > </h5>
    </div>
    <br/>
@@ -28,9 +29,32 @@
 
    <br/>
 
-   <input id="datepicker_start">
-   <br/>
-   <input id="datepicker_end">
+   <div class="data_picker flex flex-col  pb-4 rounded-lg">
+     <input type="date" id="start_date" >
+     <input type="date" id="end_date" >
+     <br/>
+
+     <div class="flex justify-around ">
+       <input onchange="calculate_cost()" class="custom-checkbox absolute left-0 top-0" type="checkbox" id="guaranteed_booking">
+       <label for="guaranteed_booking">Доп. день на въезд</label>
+       <!-- <br/> -->
+
+
+       <div class="">
+         <div class="number text-Blue">
+           <button class="number-minus rounded-l-lg" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
+           <input class="rounded-lg bg-Grey" id="count" type="number" min="1" value="1" onchange="calculate_cost()" readonly>
+           <button class="number-plus rounded-r-lg" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+         </div> Кол-во персон
+       </div>
+
+
+     </div>
+
+
+
+   </div>
+
 
    <div id="cost">
      Выберете дату, чтобы узнать, сколько это будет стоит

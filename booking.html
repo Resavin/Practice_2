@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="dist/output.css" rel="stylesheet">
+    <link href="dist/bodycenter.css" rel="stylesheet">
+    <link href="dist/date_picker.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript" src="booking.js"></script>
+    <script type="text/javascript" src="register.js"></script>
+    <script type="text/javascript" src="user.js"></script>
+    <script type="text/javascript" src="login.js"></script>
+    <title> Профиль "Клык моржа" </title>
+ </head>
+ <body class="bg-Black text-Yellow text-lg font-sans font-bold items-center flex flex-col">
+   <div id="footer" class="items-center italic flex flex-col">
+     <a href="test.html"><img src="walrusYellow.png" width="200"></a>
+     <div > Подтвердите условия бронирования </div>
+     <div> или отредактируйте его </div>
+     <h5 id="user" > </h5>
+
+   </div>
+
+   <div class="-mt-5 items-center flex flex-col">
+
+
+     <div id="first_name_head">Прибытие</div>
+     <input id="first_name" type="text" readonly="readonly"
+      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_first_name"></div>
+     <div id="first_name_head">Выезд</div>
+     <input id="first_name" type="text" readonly="readonly"
+      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_first_name"></div>
+
+     <!-- <div id="first_name_head">Доп. день на въезд</div>
+     <input id="first_name" type="text" readonly="readonly"
+      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black  font-medium   rounded">
+     <div id="err_first_name"></div> -->
+
+
+     <input onchange="calculate_cost()" class="custom-checkbox absolute left-0 top-0 py-4 px-4 h-0 w-96" type="checkbox" id="guaranteed_booking">
+     <label for="guaranteed_booking">Доп. день на въезд</label>
+
+
+     <div id="first_name_head">Количество гостей</div>
+     <input id="first_name" type="text" readonly="readonly"
+      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_first_name"></div>
+
+
+     <!-- <input onchange="calculate_cost()" class="custom-checkbox2 absolute left-0 top-0 py-4 px-4 h-0 w-96" type="checkbox" id="guaranteed_booking">
+     <label for="guaranteed_booking">Вы с животными</label> -->
+
+
+     <!-- <div id="first_name_head">Оплатить сейчас</div>
+     <input id="first_name" type="text" readonly="readonly"
+      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_first_name"></div> -->
+
+
+     <input id="save_user" type="submit" onclick="paid()" value="Оплатить сейчас"
+     class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Blue border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
+
+
+
+     <input id="save_user" type="submit" onclick="paid()" value="Продолжить"
+     class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
+
+   </div>
+
+
+ </body>
+</html>

@@ -57,6 +57,8 @@
 
 
 
+
+
 .number {
 
 	display: inline-block;
@@ -64,7 +66,7 @@
 	width: 100px;
 }
 .number input[type="number"] {
-  
+
   background-color: #5d7796;
 	display: block;
 	height: 32px;
