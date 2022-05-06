@@ -23,7 +23,8 @@ function is_user(){
     var user = document.getElementById('user');
     login = document.createElement('a');
     login.setAttribute('href','sign_in.html');
-    login.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0 ');
+    login.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan \
+      text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0 ');
     login.innerHTML = "Вход";
     user.appendChild(login);
     // u.appendChild( login );
@@ -46,12 +47,15 @@ function is_user(){
 
     user_page = document.createElement('a');
 
-    user_page.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0');
-    user_page.setAttribute('href','user.html?user_login=' + name);
-    user_page.innerHTML = "Профиль";
+
+    if(!window.location.href.includes("user.html")){
+      user_page.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0');
+      user_page.setAttribute('href','user.html?user_login=' + name);
+      user_page.innerHTML = "Профиль";
+    }
 
     exit = document.createElement('a');
-    exit.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0');
+    exit.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:cursor-pointer hover:shadow-md hover:shadow-Cyan active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0');
     exit.setAttribute('onclick','logout()' );
     exit.innerHTML = "Выход";
 

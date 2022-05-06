@@ -67,7 +67,8 @@
 }
 .number input[type="number"] {
 
-  background-color: #5d7796;
+  /*background-color: #5d7796;*/
+  background-color: #282C34;
 	display: block;
 	height: 32px;
 	line-height: 32px;
@@ -86,7 +87,8 @@
 }
 .number-minus {
 
-  background-color: #536b82;
+  /*background-color: #536b82;*/
+  background-color: #ABB2BF;
 	position: absolute;
 	top: 1px;
 	left: 1px;
@@ -103,7 +105,8 @@
 
 .number-plus {
 
-  background-color: #536b82;
+  /*background-color: #536b82;*/
+  background-color: #ABB2BF;
 	position: absolute;
 	top: 1px;
 	right: 1px;

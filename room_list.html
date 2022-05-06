@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="dist/output.css" rel="stylesheet">
     <link href="dist/bodycenter.css" rel="stylesheet">
     <link href="dist/date_picker.css" rel="stylesheet">
+    <link href="dist/output.css" rel="stylesheet">
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -32,17 +32,18 @@
 
         <div class="flex justify-around ">
           <input onchange="listRooms()" class="custom-checkbox absolute left-0 top-0" type="checkbox" id="guaranteed_booking">
-          <label for="guaranteed_booking">Доп. день на въезд</label>
+          <label for="guaranteed_booking" class="text-base">Доп. день на въезд</label>
           <!-- <br/> -->
 
 
-          <div class="">
+          <div class="text-md">
             <!-- нормер - в -->
-            <div class="number text-Blue">
+            <div class="number ">
             	<button class="number-minus rounded-l-lg" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
-            	<input class="rounded-lg bg-Grey" id="count" type="number" min="0" value="1" onchange="listRooms()" readonly>
+            	<input class="rounded-lg bg-Black text-Grey font-bold" id="count" type="number" min="0" value="1" onchange="listRooms()" readonly>
             	<button class="number-plus rounded-r-lg" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
-            </div>     Кол-во персон
+            </div>    
+            <span class="ml-2 text-base">Кол-во персон</span> 
           </div>
 
 
