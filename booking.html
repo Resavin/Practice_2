@@ -28,14 +28,15 @@
    <div class="-mt-5 items-center flex flex-col">
 
 
-     <div id="first_name_head">Прибытие</div>
-     <input id="first_name" type="text" readonly="readonly"
+     <div id="start_date_head">Прибытие</div>
+     <input id="start_date" type="text" readonly="readonly"
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
-     <div id="err_first_name"></div>
-     <div id="first_name_head">Выезд</div>
-     <input id="first_name" type="text" readonly="readonly"
+     <div id="err_start_date"></div>
+
+     <div id="end_date_head">Выезд</div>
+     <input id="end_date" type="text" readonly="readonly"
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
-     <div id="err_first_name"></div>
+     <div id="err_end_date"></div>
 
      <!-- <div id="first_name_head">Доп. день на въезд</div>
      <input id="first_name" type="text" readonly="readonly"
@@ -43,32 +44,23 @@
      <div id="err_first_name"></div> -->
 
 
-     <input onchange="calculate_cost()" class="custom-checkbox absolute left-0 top-0 py-4 px-4 h-0 w-96" type="checkbox" id="guaranteed_booking">
-     <label for="guaranteed_booking">Доп. день на въезд</label>
+     <input onchange="calculate_cost()" class="custom-checkbox " type="checkbox" id="guaranteed_booking">
+     <label for="guaranteed_booking" class="py-3" >Доп. день на въезд</label>
 
 
-     <div id="first_name_head">Количество гостей</div>
-     <input id="first_name" type="text" readonly="readonly"
+     <div id="person_count_head">Количество гостей</div>
+     <input id="person_count" type="text" readonly="readonly"
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
-     <div id="err_first_name"></div>
+     <div id="err_person_count"></div>
 
 
-     <!-- <input onchange="calculate_cost()" class="custom-checkbox2 absolute left-0 top-0 py-4 px-4 h-0 w-96" type="checkbox" id="guaranteed_booking">
-     <label for="guaranteed_booking">Вы с животными</label> -->
-
-
-     <!-- <div id="first_name_head">Оплатить сейчас</div>
-     <input id="first_name" type="text" readonly="readonly"
-      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
-     <div id="err_first_name"></div> -->
-
-
-     <input id="save_user" type="submit" onclick="paid()" value="Оплатить сейчас"
+     <input id="pay_state" type="submit" onclick="paid()" value="Оплатить сейчас"
      class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Blue border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
 
 
+     <!-- bg-Black active:bg-Cyan active:text-Black font-semibold text-Blue border-Cyan rounded border-solid px-5 w-96 h-7 mt-4 -->
 
-     <input id="save_user" type="submit" onclick="paid()" value="Продолжить"
+     <input id="continue" type="submit" onclick="next_stage()" value="Продолжить"
      class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
 
    </div>

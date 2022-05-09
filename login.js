@@ -31,6 +31,8 @@ function login(){
           localStorage.setItem( 'token', r['data']['data']['token'] );
           localStorage.setItem( 'name', r['data']['data']['user']['username'] );
           //localStorage.setItem( 'id', r['data']['data']['user']['id'] );
+
+
           window.location.href = ret_url;
 
         }else{

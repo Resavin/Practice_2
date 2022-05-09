@@ -176,6 +176,9 @@ function calculate_cost(){
 
   let start_date = document.getElementById('start_date').value;
   let end_date = document.getElementById('end_date').value;
+  let additional_day = document.getElementById('guaranteed_booking').checked;
+  let person_count = document.getElementById('count').value;
+
   var params = {};
 
   if( start_date != '' ){
@@ -194,7 +197,62 @@ function calculate_cost(){
                 cost.innerHTML = "Это будет стоить " + r['data']['data']['cost'] + " денег";
 
         let book = document.createElement('a');
-        book.setAttribute('href','booking.html');
+
+        let urlParam = '';
+        let end_page = 'booking.html'
+
+
+
+        if ( start_date != '' ){
+          if( urlParam == '' ){
+            urlParam += '?';
+          }else{
+            urlParam += '&';
+          }
+          urlParam += 'arrivalDate=';
+          urlParam +=  start_date;
+        }
+
+
+        if ( end_date != '' ){
+          if( urlParam == '' ){
+            urlParam += '?';
+          }else{
+            urlParam += '&';
+          }
+          urlParam += 'departureDate=';
+          urlParam +=  end_date;
+        }
+
+
+        if ( additional_day != '' ){
+          if( urlParam == '' ){
+            urlParam += '?';
+          }else{
+            urlParam += '&';
+          }
+          urlParam += 'additionalDay=';
+          urlParam +=( additional_day );
+        }
+
+        if ( person_count != '' ){
+          if( urlParam == '' ){
+            urlParam += '?';
+          }else{
+            urlParam += '&';
+          }
+          urlParam += 'personCount='
+          urlParam +=  person_count;
+        }
+
+        if( !is_login() ){
+          //param = window.location.search.replace('&','\&amp;\g').replace('?','\&qu;\g');
+          param = encodeURIComponent(urlParam)
+          urlParam = '?r=' + 'booking.html' + param;
+          end_page = 'sign_up.html'
+        }
+
+        book.setAttribute('href',end_page + urlParam );
         book.innerHTML = "Забронировать";
 
         cost.appendChild(book);
@@ -203,8 +261,3 @@ function calculate_cost(){
   });
 
 };
-
-
-function paid() {
-
-}
