@@ -55,22 +55,25 @@ function page_content(){
         var amenities = document.createElement('div');
 
         title.innerHTML = r['data']['data']['title'];
-        cost.innerHTML = "Стоимость " + r['data']['data']['cost'] + " денег в день";
+        cost.innerHTML = " Стоимость " + r['data']['data']['cost'] + " денег в день ";
         capacity.innerHTML = "номер на " + r['data']['data']['capacity'] + " персон";
         description.innerHTML = r['data']['data']['description'];
+        description.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
         type.innerHTML = "Крутость " + r['data']['data']['type'];
 
         for( let i = 0; i < r['data']['data']['images'].length; i++ ){
           var image = document.createElement('img');
           image.setAttribute( 'height', '100' );
-          image.setAttribute( 'src', r['data']['data']['images'][i] );
+          image.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
+          images.setAttribute( 'src', r['data']['data']['images'][i] );
           images.appendChild( image );
         }
 
-        amenities.innerHTML = "Удобства<br/>";
+        amenities.innerHTML = "Удобства";
         for( let i = 0; i < r['data']['data']['amenities'].length; i++ ){
           amenity = document.createElement('div');
           amenity.innerHTML = r['data']['data']['amenities'][i]['text'];
+          amenities.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
           amenities.appendChild(amenity);
         }
 
@@ -117,8 +120,8 @@ function page_content(){
                     calculate_cost();
                   });
                 },
-                grid: 1,
-                calendars: 1,
+                grid: 2,
+                calendars: 2,
                                 inline: true,
                 lang: "ru-RU",
                 plugins: ['RangePlugin', 'LockPlugin'],

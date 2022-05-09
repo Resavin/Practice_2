@@ -22,23 +22,19 @@
         <div class="italic text-Grey"> Выберите дату и количество персон </div>
         <div class="italic text-Grey"> и мы предложем вам подходящие номера </div>
         <h5 id="user" > </h5>
-
       </div>
 <!-- items-center -->
       <div class="data_picker flex flex-col  pb-4 rounded-lg">
         <input type="date" id="start_date" >
         <input type="date" id="end_date" >
-        <br/>
 
         <div class="flex justify-around ">
-          <input onchange="listRooms()" class="custom-checkbox absolute left-0 top-0" type="checkbox" id="guaranteed_booking">
+          <input onchange="listRooms()" class="custom-checkbox absolute left-0 top-0 mr-5" type="checkbox" id="guaranteed_booking">
           <label for="guaranteed_booking" class="text-base">Доп. день на въезд</label>
-          <!-- <br/> -->
-
 
           <div class="text-md">
             <!-- нормер - в -->
-            <div class="number ">
+            <div class=" number ">
             	<button class="number-minus rounded-l-lg" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
             	<input class="rounded-lg bg-Black text-Grey font-bold" id="count" type="number" min="0" value="1" onchange="listRooms()" readonly>
             	<button class="number-plus rounded-r-lg" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
@@ -46,21 +42,12 @@
             <span class="ml-2 text-base">Кол-во персон</span> 
           </div>
 
-
         </div>
 
-
-
       </div>
 
-
-      <div id="roomList">
-
-
-      </div>
+      <div id="roomList">      </div>
 
   </body>
-
-
 
 </html>
