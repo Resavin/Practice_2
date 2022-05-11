@@ -77,12 +77,14 @@ function logout(){
     }
   }).then(function(r){
     if( r.status == 200 ){
-      if( r['data'].status_code == 200 ){
+      //if( r['data'].status_code == 200 ){
         localStorage.removeItem('token');
         localStorage.removeItem('name');
         //localStorage.removeItem('id');
         window.location.href = 'test.html';
-      }
+      //}
+
+    }else{
       throw {
          name: 'NetworkError',
          message: 'A network error occurred.'
