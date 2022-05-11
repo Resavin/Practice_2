@@ -6,7 +6,8 @@
     <link href="dist/output.css" rel="stylesheet">
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="axios.min.js"></script>
+    <script type="text/javascript" src="network_error.js"></script>
     <script src="date_pick.js"></script>
     <script type="text/javascript" src="rooms.js"></script>
     <script type="text/javascript" src="user.js"></script>
@@ -38,8 +39,8 @@
             	<button class="number-minus rounded-l-lg" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
             	<input class="rounded-lg bg-Black text-Grey font-bold" id="count" type="number" min="0" value="1" onchange="listRooms()" readonly>
             	<button class="number-plus rounded-r-lg" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
-            </div>    
-            <span class="ml-2 text-base">Кол-во персон</span> 
+            </div>
+            <span class="ml-2 text-base">Кол-во персон</span>
           </div>
 
         </div>

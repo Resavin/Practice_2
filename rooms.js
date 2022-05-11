@@ -27,7 +27,7 @@ function listRooms(){
   }
   //console.log( params );
   axios.get( baseurl + 'rooms', {params:params} )
-  .then(response => addRooms( response ));
+  .then(response => addRooms( response )).catch( e => network_error(e) );
 
 }
 
@@ -102,7 +102,13 @@ function addRooms(rooms){
         //console.log( rooms['data']['data'][i] )
       }
     }
+  }else{
+    throw {
+       name: 'NetworkError',
+       message: 'A network error occurred.'
+    }
   }
+
 
   // console.log( rooms );
   // console.log( rooms['data'] );

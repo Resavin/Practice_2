@@ -18,8 +18,15 @@ function change_pass(){
       }
     }
     axios.put(url, profile, header).then(function(r){
-      console.log(r);
-    });
+      if( r.status == 200){
+
+      }else{
+      throw {
+         name: 'NetworkError',
+         message: 'A network error occurred.'
+        }
+      }
+    }).catch( e => network_error(e) );
     //console.log(passw);
   }else{
     check_pass( 1 );
@@ -81,8 +88,13 @@ function save_user(){
           document.getElementById('error').innerHTML = r['data']['error'];
           //getElementsByClassName('className')
         }
+      }else{
+      throw {
+         name: 'NetworkError',
+         message: 'A network error occurred.'
+        }
       }
-    });
+    }).catch( e => network_error(e) );
   }else{
     check_username();
     check_email();
@@ -179,9 +191,13 @@ function page_content(){
         document.getElementById('user_info').innerHTML = r['data']['error']
         //user_info
       }
+    }else{
+    throw {
+       name: 'NetworkError',
+       message: 'A network error occurred.'
+      }
     }
-
-  });
+  }).catch( e => network_error(e) );
 
 
   console.log(user_id);

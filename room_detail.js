@@ -85,9 +85,13 @@ function page_content(){
         room.appendChild(amenities);
 
               }
+    }else{
+      throw {
+         name: 'NetworkError',
+         message: 'A network error occurred.'
+      }
     }
-
-  });
+  }).catch( e => network_error(e) );
 
 
 
@@ -158,8 +162,13 @@ function page_content(){
 
 
       }
+    }else{
+      throw {
+         name: 'NetworkError',
+         message: 'A network error occurred.'
+      }
     }
-  });
+  }).catch( e => network_error(e) );
 
 
 
@@ -242,7 +251,12 @@ function calculate_cost(){
 
         cost.appendChild(book);
       }
-    }
-  });
+    }else{
+      throw {
+         name: 'NetworkError',
+         message: 'A network error occurred.'
+        }
+      }
+    }).catch( e => network_error(e) );
 
 };

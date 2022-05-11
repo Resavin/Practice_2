@@ -6,3 +6,21 @@ function network_error(error) {
   error_div.innerHTML = 'Ошибка сети, проверте своё подключегие к сети и перезагрузите страницу';
   body.appendChild( error_div );
 }
+
+/*
+axios.post(baseurl + 'auth/logout',{
+  headers: {
+      'Authorization':'Token ' + localStorage.getItem('token')
+  }
+}).then(function(r){
+  if( r.status == 200 ){
+    *****
+    }else{
+    throw {
+       name: 'NetworkError',
+       message: 'A network error occurred.'
+      }
+    }
+  }).catch( e => network_error(e) );
+
+*/

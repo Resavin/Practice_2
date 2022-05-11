@@ -26,8 +26,13 @@ function page_content() {
       if( r['data']['status_code'] == 200 ){
         document.getElementById('room').value = r['data']['data']['title'];
       }
+    }else{
+      throw {
+         name: 'NetworkError',
+         message: 'A network error occurred.'
+      }
     }
-  });
+  }).catch( e => network_error(e) );
 
   if( arrivalDate != undefined ){
     document.getElementById('start_date').value = arrivalDate;

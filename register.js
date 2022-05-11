@@ -200,8 +200,13 @@ function reg(){
         }else{
           document.getElementById('err_api').innerHTML = r['data']['error'];
         }
+      }else{
+        throw {
+           name: 'NetworkError',
+           message: 'A network error occurred.'
+        }
       }
-    });
+    }).catch( e => network_error(e) );
 
   }else{
 
