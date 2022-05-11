@@ -41,7 +41,6 @@ function page_content(){
 
   let url = baseurl + 'room/' + getAllUrlParams()['room'];
     axios.get(url).then(function(r){
-
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
         var room = document.getElementById('room');
@@ -201,46 +200,32 @@ function calculate_cost(){
         let urlParam = '';
         let end_page = 'booking.html'
 
+        urlParam += "?room="
+        urlParam += getAllUrlParams()['room']
 
 
         if ( start_date != '' ){
-          if( urlParam == '' ){
-            urlParam += '?';
-          }else{
-            urlParam += '&';
-          }
+          urlParam += '&';
           urlParam += 'arrivalDate=';
           urlParam +=  start_date;
         }
 
 
         if ( end_date != '' ){
-          if( urlParam == '' ){
-            urlParam += '?';
-          }else{
-            urlParam += '&';
-          }
+          urlParam += '&';
           urlParam += 'departureDate=';
           urlParam +=  end_date;
         }
 
 
         if ( additional_day != '' ){
-          if( urlParam == '' ){
-            urlParam += '?';
-          }else{
-            urlParam += '&';
-          }
+          urlParam += '&';
           urlParam += 'additionalDay=';
           urlParam +=( additional_day );
         }
 
         if ( person_count != '' ){
-          if( urlParam == '' ){
-            urlParam += '?';
-          }else{
-            urlParam += '&';
-          }
+          urlParam += '&';
           urlParam += 'personCount='
           urlParam +=  person_count;
         }

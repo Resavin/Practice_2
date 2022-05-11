@@ -27,14 +27,18 @@
 
    <div class="-mt-5 items-center flex flex-col">
 
+     <div id="room_head">Номер</div>
+     <input id="room" type="text" onclick="change_date()"
+      class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
+     <div id="err_room"></div>
 
      <div id="start_date_head">Прибытие</div>
-     <input id="start_date" type="text" readonly="readonly"
+     <input id="start_date" type="text" onclick="change_date()"
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
      <div id="err_start_date"></div>
 
      <div id="end_date_head">Выезд</div>
-     <input id="end_date" type="text" readonly="readonly"
+     <input id="end_date" type="text" onclick="change_date()"
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
      <div id="err_end_date"></div>
 
@@ -49,7 +53,7 @@
 
 
      <div id="person_count_head">Количество гостей</div>
-     <input id="person_count" type="text" readonly="readonly"
+     <input id="person_count" type="text"
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
      <div id="err_person_count"></div>
 

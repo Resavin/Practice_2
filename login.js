@@ -39,8 +39,13 @@ function login(){
           document.getElementById('err_api').innerHTML = r['data']['error'];
         }
 
+      }else{
+        throw {
+           name: 'NetworkError',
+           message: 'A network error occurred.'
+        }
       }
-    });
+    }).catch( e => network_error(e) );
   }else{
     if( login == '' ){
       document.getElementById('err_login').innerHTML = "Это обязательное поле";
@@ -65,15 +70,25 @@ function logout(){
 
   config = {}
   console.log("logout");
+
   axios.post(baseurl + 'auth/logout',{
     headers: {
         'Authorization':'Token ' + localStorage.getItem('token')
     }
   }).then(function(r){
-    localStorage.removeItem('token');
-    localStorage.removeItem('name');
-    //localStorage.removeItem('id');
-    window.location.href = 'test.html';
-  });
+    if( r.status == 200 ){
+      if( r['data'].status_code == 200 ){
+        localStorage.removeItem('token');
+        localStorage.removeItem('name');
+        //localStorage.removeItem('id');
+        window.location.href = 'test.html';
+      }
+      throw {
+         name: 'NetworkError',
+         message: 'A network error occurred.'
+      }
+    }
+  }).catch( e => network_error(e) );
+
 
 }

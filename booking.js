@@ -2,6 +2,7 @@
 
 var paid_state = false;
 
+
 function page_content() {
 
   if( !is_login() ){
@@ -12,16 +13,27 @@ function page_content() {
   let par = new URLSearchParams( window.location.search );
   // let ret_url = par.get('r');
 
+
+  let room = par.get('arrivalDate');
   let arrivalDate = par.get('arrivalDate');
   let departureDate = par.get('departureDate');
   let additionalDay = par.get('additionalDay');
   let personCount = par.get('personCount');
 
+  let url = baseurl + 'room/' + getAllUrlParams()['room'];
+    axios.get(url).then(function(r){
+    if( r['status'] == 200 ){
+      if( r['data']['status_code'] == 200 ){
+        document.getElementById('room').value = r['data']['data']['title'];
+      }
+    }
+  });
+
   if( arrivalDate != undefined ){
     document.getElementById('start_date').value = arrivalDate;
   }
   if( departureDate != undefined ){
-    document.getElementById('end_date').value = arrivalDate;
+    document.getElementById('end_date').value = departureDate;
   }
   if( additionalDay != undefined ){
     document.getElementById('guaranteed_booking').checked = additionalDay == 'true';
