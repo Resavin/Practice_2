@@ -71,18 +71,20 @@ function logout(){
   config = {}
   console.log("logout");
 
-  axios.post(baseurl + 'auth/logout',{
+  axios.post(baseurl + 'auth/logout',{},{
     headers: {
         'Authorization':'Token ' + localStorage.getItem('token')
     }
   }).then(function(r){
     if( r.status == 200 ){
-      //if( r['data'].status_code == 200 ){
+      if( r['data'].status_code == 200 ){
         localStorage.removeItem('token');
         localStorage.removeItem('name');
-        //localStorage.removeItem('id');
+
         window.location.href = 'test.html';
-      //}
+      }else{
+        console.log('api_error');
+      }
 
     }else{
       throw {

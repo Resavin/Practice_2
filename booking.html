@@ -5,12 +5,9 @@
     <link href="dist/bodycenter.css" rel="stylesheet">
     <link href="dist/date_picker.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <script src="axios.min.js"></script>
     <script type="text/javascript" src="network_error.js"></script>
-
+    <script src="date_pick.js"></script>
     <script type="text/javascript" src="booking.js"></script>
     <script type="text/javascript" src="register.js"></script>
     <script type="text/javascript" src="user.js"></script>
@@ -18,6 +15,7 @@
     <title> Профиль "Клык моржа" </title>
  </head>
  <body class="bg-Black text-Yellow text-lg font-sans font-bold items-center flex flex-col">
+
    <div id="footer" class="items-center italic flex flex-col">
      <a href="test.html"><img src="walrusYellow.png" width="200"></a>
      <div > Подтвердите условия бронирования </div>
@@ -26,10 +24,14 @@
 
    </div>
 
+
+
    <div class="-mt-5 items-center flex flex-col">
 
+
+
      <div id="room_head">Номер</div>
-     <input id="room" type="text" onclick="change_date()"
+     <input id="room" type="text" onclick="select_room()"
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
      <div id="err_room"></div>
 
@@ -43,18 +45,19 @@
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
      <div id="err_end_date"></div>
 
+
      <!-- <div id="first_name_head">Доп. день на въезд</div>
      <input id="first_name" type="text" readonly="readonly"
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black  font-medium   rounded">
      <div id="err_first_name"></div> -->
 
 
-     <input onchange="calculate_cost()" class="custom-checkbox " type="checkbox" id="guaranteed_booking">
+     <input onchange="" class="custom-checkbox " type="checkbox" id="guaranteed_booking">
      <label for="guaranteed_booking" class="py-3" >Доп. день на въезд</label>
 
 
      <div id="person_count_head">Количество гостей</div>
-     <input id="person_count" type="text"
+     <input id="person_count" type="number" min='1' max='20'
       class="border-Cyan text-md border-solid rounded focus:font-bold text-Black w-96 font-medium py-4 px-4 h-0  rounded">
      <div id="err_person_count"></div>
 
@@ -65,8 +68,13 @@
 
      <!-- bg-Black active:bg-Cyan active:text-Black font-semibold text-Blue border-Cyan rounded border-solid px-5 w-96 h-7 mt-4 -->
 
+     <div id="api_error"></div>
+
      <input id="continue" type="submit" onclick="next_stage()" value="Продолжить"
      class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">
+
+     <!-- <button id="continue" onclick="next_stage()"
+     class="bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Cyan rounded border-solid px-5 w-96 h-7 mt-4">Продолжить</button> -->
 
    </div>
 
