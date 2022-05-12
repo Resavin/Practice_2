@@ -47,8 +47,8 @@ function is_user(){
 
     user_page = document.createElement('a');
 
-
-    if(!window.location.href.includes("user.html")){
+    let par = new URLSearchParams( window.location.search );
+    if( !window.location.href.includes("user.html") || (window.location.href.includes("user.html") && par.get('user_login') != name ) ){
       user_page.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:cursor-pointer hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0');
       user_page.setAttribute('href','user.html?user_login=' + name);
       user_page.innerHTML = "Профиль";

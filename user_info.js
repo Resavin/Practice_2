@@ -110,6 +110,7 @@ function save_user(){
 
 function page_content(){
 
+  document.getElementById('my_book').style.display = "none";
   document.getElementById('email').style.display = "none";
   document.getElementById('first_name').style.display = "none";
   document.getElementById('second_name').style.display = "none";
@@ -139,6 +140,7 @@ function page_content(){
 
 
   if( user_login == localStorage.getItem('name') ){
+    document.getElementById('my_book').style.display = "block";
     document.getElementById('email').style.display = "block";
     document.getElementById('first_name').style.display = "block";
     document.getElementById('second_name').style.display = "block";
