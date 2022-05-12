@@ -12,11 +12,16 @@ function change_pass(){
     let profile = user;
     profile['password'] = passw;
     //user['password'] = passw;
-    header = {
-      headers: {
-        'Authorization':'Token ' + localStorage.getItem('token')
+    if( is_login() ){
+      header = {
+        headers: {
+          'Authorization':'Token ' + localStorage.getItem('token')
+        }
       }
+    }else{
+      header = {}
     }
+
     axios.put(url, profile, header).then(function(r){
       if( r.status == 200){
 
@@ -148,11 +153,16 @@ function page_content(){
   }
 
   url = baseurl + 'user';
-
-  axios.get(url, {params:params,
-    headers: {
+  if( is_login() ){
+    header = {
         'Authorization':'Token ' + localStorage.getItem('token')
     }
+  }else{
+    header = {}
+  }
+
+  axios.get(url, {params:params,
+    headers:header
   } ).then(function(r){
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
