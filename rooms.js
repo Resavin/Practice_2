@@ -50,6 +50,7 @@ function addRooms(rooms){
 
         roomName.innerHTML = '<b>' + rooms['data']['data'][i]['title'] + '</b>';
         roomName.setAttribute('href','room_detail.html?room=' + rooms['data']['data'][i]['id'] );
+        roomName.setAttribute('class', '' );
 
         cost.innerHTML = 'Стоимость ' + rooms['data']['data'][i]['cost'];
 
@@ -59,7 +60,9 @@ function addRooms(rooms){
 
 
 
-        roomName.setAttribute('class','no-underline text-blue-600');
+        roomName.setAttribute('class','no-underline hover:bg-Grey/[.3] \
+              hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan text-xl text-Blue \
+              no-underline hover:grayscale-0 mt-10');
         room.setAttribute('class','grid grid-rows-2 grid-flow-col gap-4 py-8');
         images.setAttribute('class','lg:row-span-2 md:col-span-1 object-contain h-48 w-96');
         right.setAttribute('class','lg:row-span-1 md:col-span-2');

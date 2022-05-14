@@ -43,46 +43,53 @@ function page_content(){
     axios.get(url).then(function(r){
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
-        var room = document.getElementById('room');
-
-        var title = document.createElement('div');
-        var cost = document.createElement('div');
-        var capacity = document.createElement('div');
-        var description = document.createElement('div');
-        var type = document.createElement('div');
-        var images = document.createElement('div');
+        var fullRoom = document.getElementById('fullRoom');
+        var room = document.createElement('div');
         var amenities = document.createElement('div');
+        var title = document.createElement('div');
+        var cost = document.createElement('span');
+        var capacity = document.createElement('span');
+        var type = document.createElement('span');
+        var description = document.createElement('div');
+        var images = document.createElement('div');
 
-        title.innerHTML = r['data']['data']['title'];
-        cost.innerHTML = " Стоимость " + r['data']['data']['cost'] + " денег в день ";
-        capacity.innerHTML = "номер на " + r['data']['data']['capacity'] + " персон";
         description.innerHTML = r['data']['data']['description'];
-        description.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
+        description.setAttribute( 'class', 'text-Green w-96 mt-5 border-solid border-Cyan px-3 py-2 font-bold font-sans font-base flex flex-col items-center');
+        room.setAttribute('class', 'mb-1');
+        amenities.setAttribute('class', '');
+        title.innerHTML = r['data']['data']['title'];
+        title.setAttribute( 'class', 'text-2xl italic flex flex-col items-center');
+        cost.innerHTML = "Cтоит " + r['data']['data']['cost'] + " денег в день; ";
+        capacity.innerHTML = "номер на " + r['data']['data']['capacity'] + " персон; ";
         type.innerHTML = "Крутость " + r['data']['data']['type'];
 
         for( let i = 0; i < r['data']['data']['images'].length; i++ ){
           var image = document.createElement('img');
           image.setAttribute( 'height', '100' );
-          image.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
+          // image.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
           images.setAttribute( 'src', r['data']['data']['images'][i] );
           images.appendChild( image );
         }
+
+        fullRoom.appendChild(title);
+        fullRoom.appendChild(description);
+        fullRoom.appendChild(amenities);
+        fullRoom.appendChild(room);
+        room.appendChild(cost);
+        room.appendChild(capacity);
+        room.appendChild(type);
+        fullRoom.appendChild(images);
 
         amenities.innerHTML = "Удобства";
         for( let i = 0; i < r['data']['data']['amenities'].length; i++ ){
           amenity = document.createElement('div');
           amenity.innerHTML = r['data']['data']['amenities'][i]['text'];
-          amenities.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
+          amenity.setAttribute( 'class', 'text-Cyan');
+          amenities.setAttribute( 'class', 'text-Green mt-2 mb-2 font-bold font-sans font-base flex flex-col items-center');
           amenities.appendChild(amenity);
         }
 
-        room.appendChild(title);
-        room.appendChild(cost);
-        room.appendChild(capacity);
-        room.appendChild(description);
-        room.appendChild(type);
-        room.appendChild(images);
-        room.appendChild(amenities);
+
 
               }
     }else{
@@ -247,7 +254,10 @@ function calculate_cost(){
         }
 
         book.setAttribute('href',end_page + urlParam );
-        book.innerHTML = "Забронировать";
+        book.setAttribute('class', 'px-2 flex-col items-center hover:bg-Grey/[.3] \
+              hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan  text-Blue \
+              no-underline hover:grayscale-0 mt-10 ml-2' );
+        book.innerHTML = " Забронировать";
 
         cost.appendChild(book);
       }

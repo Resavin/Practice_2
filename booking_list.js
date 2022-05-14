@@ -30,31 +30,42 @@ function page_content() {
           let book = document.createElement('div');
 
           let room = document.createElement('div');
-          let arrivalDate = document.createElement('span');
+          // let arrivalDate = document.createElement('span');
+          let arrivalDate = document.createElement('div');
           let arrivalDate2 = document.createElement('span');
           let departureDate = document.createElement('span');
           let departureDate2 = document.createElement('span');
           let additionalDay = document.createElement('div');
-          let personCount = document.createElement('div');
+          let personCount = document.createElement('span');
+          let personCount2 = document.createElement('span');
           let paid_status = document.createElement('div');
           let prostoDiv = document.createElement('div');
+          let horizontalLine = document.createElement('hr');
+          let horizontalLine2 = document.createElement('hr');
 
           let update_book = document.createElement('button');
           let delete_book = document.createElement('button');
 
           // room.innerHTML = "Номер "; 
-          room.setAttribute('class', 'text-Cyan items-center flex flex-col'); 
+          room.setAttribute('class', ' text-Cyan  items-center flex flex-col'); 
           change_room_title( _room_id, room );
-          arrivalDate.innerHTML = "Дата прибытия: ";
-          arrivalDate2.innerHTML = _arrivalDate;
-          arrivalDate2.setAttribute('class', 'text-Cyan space-x-10');
-          // departureDate2.setAttribute('class', 'text-Purle');
-          departureDate.innerHTML = "Дата выезда ";
-          departureDate2.innerHTML = _departureDate;
-          departureDate.setAttribute('class', 'text-Cyan space-x-10');
-          departureDate2.setAttribute('class', 'text-Cyan space-x-10');
+          // arrivalDate.innerHTML = "Дата прибытия: ";
+          // arrivalDate2.innerHTML = _arrivalDate;
+          // arrivalDate2.setAttribute('class', 'text-Cyan space-x-10');
+          // // departureDate2.setAttribute('class', 'text-Purle');
+          // departureDate.innerHTML = "Дата выезда ";
+          // departureDate2.innerHTML = _departureDate;
+          // departureDate.setAttribute('class', 'text-Cyan space-x-10');
+          // departureDate2.setAttribute('class', 'text-Cyan space-x-10');
+          arrivalDate.innerHTML = "Время пребывания "
+          arrivalDate.setAttribute('class', 'flex flex-col items-center')
+          arrivalDate2.innerHTML =  _arrivalDate + " ꟷ " + _departureDate;
+          arrivalDate2.setAttribute('class', 'text-Cyan  flex flex-col items-center')
           additionalDay.innerHTML = "Доп. день на въезд  " + ( _additionalDay ? '✅':'❌' );
-          personCount.innerHTML = "Количество персон " + _personCount;
+          // additionalDay.setAttribute('class', 'w-full')
+          personCount.innerHTML = "Количество персон  ";
+          personCount2.innerHTML = _personCount;
+          personCount2.setAttribute('class','text-Cyan  ');
           paid_status.innerHTML = "Статус оплаты " + ( _paid_status ? '✅':'❌' );
           update_book.innerHTML = "Изменить ";
           update_book.setAttribute('class','mt-3 bg-Black active:bg-Cyan active:text-Black font-semibold text-Green rounded px-5 py-1 border-Cyan ');
@@ -69,11 +80,13 @@ function page_content() {
           book.appendChild(room);
           book.appendChild(arrivalDate);
           book.appendChild(arrivalDate2);
+          book.appendChild(horizontalLine);
           book.appendChild(prostoDiv);
           book.appendChild(departureDate);
           book.appendChild(departureDate2);
           book.appendChild(additionalDay);
           book.appendChild(personCount);
+          book.appendChild(personCount2);
           book.appendChild(paid_status);
 
           if( isNotInThePast(new Date(_departureDate)) ){

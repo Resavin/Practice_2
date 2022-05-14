@@ -26,7 +26,13 @@ function is_user(){
     login.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan \
       text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0 ');
     login.innerHTML = "Вход";
+    register = document.createElement('a');
+    register.setAttribute('href','sign_up.html');
+    register.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan \
+      text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0 ');
+    register.innerHTML = "Регистрация";
     user.appendChild(login);
+    user.appendChild(register);
     // u.appendChild( login );
 
     //var reg = document.getElementById('user2');
@@ -49,13 +55,13 @@ function is_user(){
 
     let par = new URLSearchParams( window.location.search );
     if( !window.location.href.includes("user.html") || (window.location.href.includes("user.html") && par.get('user_login') != name ) ){
-      user_page.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:cursor-pointer hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0');
+      user_page.setAttribute('class','px-3 italic hover:bg-Grey/[.3] hover:cursor-pointer hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0');
       user_page.setAttribute('href','user.html?user_login=' + name);
       user_page.innerHTML = "Профиль";
     }
 
     exit = document.createElement('a');
-    exit.setAttribute('class','px-3  hover:bg-Grey/[.3] hover:cursor-pointer hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0');
+    exit.setAttribute('class','px-3 italic hover:bg-Grey/[.3] hover:cursor-pointer hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan text-xl text-Green no-underline grayscale-[30%] hover:grayscale-0');
     exit.setAttribute('onclick','logout()' );
     exit.innerHTML = "Выход";
 

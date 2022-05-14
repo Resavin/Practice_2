@@ -20,14 +20,15 @@
 
     <title> Гостиница "Клык моржа" </title>
  </head>
- <body class="bg-Black flex-col flex items-center text-Green font-bold ">
+ <body class="bg-Black flex-col flex items-center text-Green font-sans font-bold ">
 
    <div id="footer">
-     <a href="test.html"><img src="walrusRed.png" width="200"></a>
-     <h5 id="user" > </h5>
+     <a href="test.html"><img src="walrusCyan.png" width="200"></a>
+     <h5 id="user" class="-mt-1"> </h5>
    </div>
 
-   <div id="room"></div>
+
+   <div id="fullRoom" class=""> </div>
 
 
    <div class="data_picker flex flex-col items-center pb-4 rounded-lg">
@@ -35,8 +36,8 @@
      <input type="date" id="end_date" >
 
      <div class="flex justify-around ">
-       <input onchange="calculate_cost()" class="custom-checkbox absolute left-0 top-0" type="checkbox" id="guaranteed_booking">
-       <label for="guaranteed_booking">Доп. день на въезд</label>
+       <input onchange="calculate_cost()" class="custom-checkbox " type="checkbox" id="guaranteed_booking">
+       <label for="guaranteed_booking" class="mr-20">Доп. день на въезд</label>
 
 
        <div class="">
@@ -53,7 +54,7 @@
    </div>
 
 
-   <div id="cost">
+   <div id="cost" class="mt-2">
      Выберете дату, чтобы узнать, сколько это будет стоит
    </div>
 
