@@ -5,7 +5,7 @@ function network_error(error) {
   body.innerHTML = "";
   error_div = document.createElement('div');
   error_div.setAttribute('class','flex flex-col items-center font-sans text-xl text-Green font-bold');
-  error_div.innerHTML = 'Ошибка сети, проверте своё подключегие к сети и перезагрузите страницу';
+  error_div.innerHTML = 'Ошибка сети, проверте своё подключение к сети и перезагрузите страницу';
 
   reload_button = document.createElement('button');
   reload_button.innerHTML = "Перезагрузить страницу";

@@ -36,6 +36,50 @@ function getAllUrlParams(url) {
   return obj;
 }
 
+function text_case( num, one, less_than_five, more_than_five ) {
+  if( num > 10 && num < 20 ){
+    return more_than_five;
+  }
+  if (num % 10 == 1){
+    return one;
+  }else if (num % 10 > 1 && num % 10 < 5) {
+    return less_than_five;
+  }else if (num % 10 > 5 ){
+    return more_than_five;
+  }else if (num % 10 == 0 ){
+    return more_than_five;
+  }else{
+    return more_than_five;
+  }
+}
+
+function time_since(date) {
+
+  var seconds = Math.floor((new Date() - date) / 1000);
+
+  var interval = seconds / 31536000;
+
+  if (interval > 1) {
+    return Math.floor(interval) + text_case(Math.floor(interval), " год", " года", " лет") + " назад";
+  }
+  interval = seconds / 2592000;
+  if (interval > 1) {
+    return Math.floor(interval) + text_case(Math.floor(interval), " месяц", " месяца", " месяцев") + " назад";
+  }
+  interval = seconds / 86400;
+  if (interval > 1) {
+    return Math.floor(interval) + text_case(Math.floor(interval), " день", " дня", " дней") + " назад";
+  }
+  interval = seconds / 3600;
+  if (interval > 1) {
+    return Math.floor(interval) + text_case(Math.floor(interval), " час", " часа", " часов") + " назад";
+  }
+  interval = seconds / 60;
+  if (interval > 1) {
+    return Math.floor(interval) + text_case(Math.floor(interval), " минуту", " минуты", " минут") + " назад";
+  }
+  return Math.floor(seconds) + text_case(Math.floor(interval*60), " секунду", " секунды", " сенунд") + " назад";
+}
 
 function page_content(){
 
@@ -187,14 +231,312 @@ function page_content(){
     }
   }).catch( e => network_error(e) );
 
+  // добавление комментов
+
+  url = baseurl + 'room/' + getAllUrlParams()['room'] + '/comments';
+
+  if( is_login() ){
+    header = {
+        'Authorization':'Token ' + localStorage.getItem('token')
+    }
+  }else{
+    header = {}
+  }
+
+  axios.get(url,{headers:header} ).then(function(r){
+    if( r.status == 200 ){
+        if( r['data']['status_code'] == 200 ){
+          console.log( r['data']['data']);
+          if( r['data']['data']['can_comment'] ){
+            comments_field = document.getElementById('comments_field');
+            comments_field.setAttribute('class','items-center flex flex-col w-full text-center block');
+
+            input_textbox = document.createElement('input');
+            input_textbox.setAttribute('type','text');
+            input_textbox.setAttribute('placeholder','оставьте здесь своё мнение об этом номере');
+            input_textbox.setAttribute('id','input_textbox');
+            input_error = document.createElement('div');
+            input_error.setAttribute('id','input_error');
+            input_button = document.createElement('button');
+            input_button.innerHTML = "Отправить";
+            input_button.setAttribute('onclick','post_comment()');
+            input_button.setAttribute('id','input_button');
+
+            input_textbox.setAttribute('class','w-2/5 text-center block flex m-3 bg-Black font-semibold text-Green rounded px-5 py-1 border-Cyan');
+            //input_error.setAttribute('class','m-3 bg-Black font-semibold text-Green rounded px-5 py-1 border-Cyan');
+            input_button.setAttribute('class','m-3 bg-Green active:bg-Green active:text-Black font-semibold text-Black rounded px-5 py-1 border-Green ');
 
 
+            comments_field.appendChild( input_textbox );
+            comments_field.appendChild( input_error );
+            comments_field.appendChild( input_button );
 
 
+          }
 
+          comments_list = document.getElementById('comments_list');
+          for( var i = 0; i < r['data']['data']['comments'].length; i++ ){
+            let comment_data = r['data']['data']['comments'][i];
+            let comment_author = comment_data['author'];
+            let comment_date = Date.parse(comment_data['created_date']);
+            let comment_text = comment_data['text'];
+            let comment_id = comment_data['id'];
+
+            comment = document.createElement('div');
+
+            author = document.createElement('a');
+            date = document.createElement('div');
+            text = document.createElement('div');
+
+            comment.setAttribute('class','border-Cyan text-md border-solid rounded focus:font-bold mt-3 font-medium py-4 px-4 rounded');
+
+            author.innerHTML = comment_author['username'];
+            author.setAttribute('href','user.html?user_login='+comment_author['username'] );
+            author.setAttribute('class','px-4 flex-col flex text-Blue  active:text-Cyan  no-underline grayscale-[30%] hover:grayscale-0 mt-2');
+
+            date.innerHTML = time_since(comment_date);
+            date.setAttribute("id","date_"+comment_id+"_comment");
+
+            text.innerHTML = comment_text;
+            text.setAttribute("id","text_"+comment_id+"_comment");
+
+
+            comment.appendChild(author);
+
+
+            if( is_login() ){
+              if( comment_author['username'] == localStorage.getItem('name') ){
+                console.log('123123');
+                edit_button = document.createElement('button');
+                delete_button = document.createElement('button');
+
+                //edit_button.setAttribute("name", "Изменить коммент");
+                //delete_button.setAttribute("name", "Удалить коммент");
+                edit_button.innerHTML = "Изменить коммент";
+                delete_button.innerHTML = "Удалить коммент";
+
+                edit_button.setAttribute("onclick","edit_comment("+comment_id+")" );
+                delete_button.setAttribute("onclick","delete_comment_dialog("+comment_id+")" );
+
+                edit_button.setAttribute("class","m-3 bg-Black active:bg-Cyan active:text-Black font-semibold text-Green rounded px-5 py-1 border-Cyan");
+                delete_button.setAttribute("class","m-3 bg-Black active:bg-Cyan active:text-Black font-semibold text-Green rounded px-5 py-1 border-Cyan");
+
+                edit_button.setAttribute("id","edit_"+comment_id+"_comment_button");
+                delete_button.setAttribute("id","delete_"+comment_id+"_comment_button");
+
+                comment.appendChild(edit_button);
+                comment.appendChild(delete_button);
+              }
+            }
+
+            comment.appendChild(date);
+            comment.appendChild(text);
+
+            comments_list.appendChild(comment);
+
+          }
+        }
+    }else{
+      throw {
+         name: 'NetworkError',
+         message: 'A network error occurred.'
+      }
+    }
+  }).catch( e => network_error(e) );
 
 };
 
+function edit_comment( comment_id ) {
+  edit_button = document.getElementById("edit_"+comment_id+"_comment_button");
+  delete_button = document.getElementById("delete_"+comment_id+"_comment_button");
+  date = document.getElementById("date_"+comment_id+"_comment");
+  text = document.getElementById("text_"+comment_id+"_comment");
+  edit_button.style.display = 'none';
+  delete_button.style.display = 'none';
+  date.style.display = 'none';
+  text.style.display = 'none';
+
+  comments_field = document.getElementById('comments_field');
+
+  input_textbox = document.createElement('input');
+  input_textbox.setAttribute('type','text');
+  input_textbox.setAttribute('placeholder','оставьте здесь свое мнение об этом номере');
+  input_textbox.value = text.innerHTML;
+  input_textbox.setAttribute('id','edit_input_textbox');
+  input_error = document.createElement('div');
+  input_error.setAttribute('id','edit_input_error');
+  input_button = document.createElement('button');
+  input_button.innerHTML = "Изменить";
+  input_button.setAttribute('onclick','change_comment('+comment_id+')');
+  input_button.setAttribute('id','edit_input_button');
+
+  input_textbox.setAttribute('class','w-9/10 text-center block flex m-3 bg-Black font-semibold text-Green rounded px-5 py-1 border-Cyan');
+  //input_error.setAttribute('class','m-3 bg-Black font-semibold text-Green rounded px-5 py-1 border-Cyan');
+  input_button.setAttribute('class','m-3 bg-Green active:bg-Green active:text-Black font-semibold text-Black rounded px-5 py-1 border-Green ');
+
+  text.after(input_button);
+  text.after(input_error);
+  text.after(input_textbox);
+}
+
+
+
+function delete_comment_dialog( comment_id ) {
+  edit_button = document.getElementById("edit_"+comment_id+"_comment_button");
+  delete_button = document.getElementById("delete_"+comment_id+"_comment_button");
+  date = document.getElementById("date_"+comment_id+"_comment");
+  text = document.getElementById("text_"+comment_id+"_comment");
+  edit_button.style.display = 'none';
+  delete_button.style.display = 'none';
+
+  confirm_dialog = document.createElement('p');
+  cancel_button = document.createElement('button');
+  confirm_button = document.createElement('button');
+  cancel_button.setAttribute('class', 'bg-Black active:bg-Cyan active:text-Black font-semibold text-Green rounded px-5 py-1 border-Cyan');
+  confirm_button.setAttribute('class', 'm-3 bg-Red active:bg-Cyan active:text-Black font-semibold text-Black rounded px-5 py-1 border-Red');
+  confirm_dialog.innerHTML = "Вы уверены, что хотите <br> удалить комментарий? ";
+  cancel_button.innerHTML = "Нет, не удалять комментарий";
+  confirm_button.innerHTML = "Да удалить комментарий";
+
+
+  cancel_button.style.display = 'block';
+  confirm_button.style.display = 'block';
+
+  confirm_dialog.setAttribute('id','delete_comment_'+comment_id+'_dialog');
+  cancel_button.setAttribute('id','delete_comment_'+comment_id+'_cancel');
+  confirm_button.setAttribute('id','delete_comment_'+comment_id+'_confirm');
+  cancel_button.setAttribute('onclick','cancel_delete_comment_dialog('+comment_id+')');
+  confirm_button.setAttribute('onclick','delete_comment('+comment_id+')');
+
+  text.after( confirm_button );
+  text.after( cancel_button );
+  text.after( confirm_dialog );
+}
+
+function cancel_delete_comment_dialog( comment_id ) {
+  document.getElementById('delete_comment_'+comment_id+'_dialog').remove();
+  document.getElementById('delete_comment_'+comment_id+'_cancel').remove();
+  document.getElementById('delete_comment_'+comment_id+'_confirm').remove();
+  edit_button = document.getElementById("edit_"+comment_id+"_comment_button");
+  delete_button = document.getElementById("delete_"+comment_id+"_comment_button");
+  edit_button.style.display = 'inline';
+  delete_button.style.display = 'inline';
+}
+
+function delete_comment( comment_id ) {
+
+  if( is_login() ){
+    header = {
+        'Authorization':'Token ' + localStorage.getItem('token')
+    }
+  }else{
+    header = {}
+  }
+
+
+  url = baseurl + 'room/' + getAllUrlParams()['room'] + '/comments';
+
+  axios.delete(url,{headers:header,data:{id:comment_id}} ).then(function(r){
+    if( r.status == 200 ){
+        if( r['data']['status_code'] == 200 ){
+          console.log( r['data']['data']);
+          window.location.reload();
+        }
+    }else{
+      throw {
+         name: 'NetworkError',
+         message: 'A network error occurred.'
+      }
+    }
+  }).catch( e => network_error(e) );
+
+
+
+
+}
+
+function change_comment( comment_id ) {
+
+  text = document.getElementById('edit_input_textbox').value;
+  error = document.getElementById('edit_input_error');
+  if( text == "" ){
+
+    error.innerHTML = "Комментарий не может быть пустым";
+  }else{
+    error.innerHTML = "";
+    if( is_login() ){
+      header = {
+          'Authorization':'Token ' + localStorage.getItem('token')
+      }
+    }else{
+      header = {}
+    }
+
+    data = {
+      id:comment_id,
+      text:text
+    }
+    url = baseurl + 'room/' + getAllUrlParams()['room'] + '/comments';
+
+    axios.put(url,data,{headers:header} ).then(function(r){
+      if( r.status == 200 ){
+          if( r['data']['status_code'] == 200 ){
+            console.log( r['data']['data']);
+            window.location.reload();
+          }
+      }else{
+        throw {
+           name: 'NetworkError',
+           message: 'A network error occurred.'
+        }
+      }
+    }).catch( e => network_error(e) );
+
+
+  }
+
+}
+
+function post_comment() {
+
+  text = document.getElementById('input_textbox').value;
+  error = document.getElementById('input_error');
+  if( text == "" ){
+
+    error.innerHTML = "Комментарий не может быть пустым";
+  }else{
+    error.innerHTML = "";
+    if( is_login() ){
+      header = {
+          'Authorization':'Token ' + localStorage.getItem('token')
+      }
+    }else{
+      header = {}
+    }
+
+    data = {
+      text:text
+    }
+    url = baseurl + 'room/' + getAllUrlParams()['room'] + '/comments';
+
+    axios.post(url,data,{headers:header} ).then(function(r){
+      if( r.status == 200 ){
+          if( r['data']['status_code'] == 200 ){
+            console.log( r['data']['data']);
+            window.location.reload();
+          }
+      }else{
+        throw {
+           name: 'NetworkError',
+           message: 'A network error occurred.'
+        }
+      }
+    }).catch( e => network_error(e) );
+
+
+  }
+
+}
 
 
 function calculate_cost(){

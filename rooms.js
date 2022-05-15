@@ -146,6 +146,9 @@ function page_content(){
     RangePlugin: {
         elementEnd: "#end_date",
         repick: true,
+        tooltipNumber(num) {
+          return num - 1;
+        },
         locale: {
             zero: "ночей",
             one: "ночь",
