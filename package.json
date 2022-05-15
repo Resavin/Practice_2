@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "electron-forge": "^0.0.5",
+    "overlayscrollbars": "^1.13.1",
     "sas": "^3.0.4"
   }
 }

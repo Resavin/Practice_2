@@ -52,33 +52,43 @@ function page_content(){
         var type = document.createElement('span');
         var description = document.createElement('div');
         var images = document.createElement('div');
+        var fullRoom2 = document.createElement('div');
+        var fullRoom1 = document.createElement('div');
 
+        fullRoom1.setAttribute( 'class', 'mt-2 grid md:grid-cols-1 lg:grid-cols-2');
         description.innerHTML = r['data']['data']['description'];
-        description.setAttribute( 'class', 'text-Green w-96 mt-5 border-solid border-Cyan px-3 py-2 font-bold font-sans font-base flex flex-col items-center');
+        description.setAttribute( 'class', 'w-[32rem] h-[22rem] hover:grayscale-0 grayscale-[30%] text-Green mt-5 border-solid border-Cyan px-3 py-2 font-bold font-sans font-base flex flex-col items-center');
+        fullRoom2.setAttribute( 'class', 'w-[32rem] mr-5 hover:grayscale-0 grayscale-[30%] text-Green  mt-5 border-solid border-Cyan px-3 py-2 font-bold font-sans font-base flex flex-col items-center');
         room.setAttribute('class', 'mb-1');
-        amenities.setAttribute('class', '');
+        amenities.setAttribute('class', 'mt-2');
         title.innerHTML = r['data']['data']['title'];
         title.setAttribute( 'class', 'text-2xl italic flex flex-col items-center');
         cost.innerHTML = "Cтоит " + r['data']['data']['cost'] + " денег в день; ";
         capacity.innerHTML = "номер на " + r['data']['data']['capacity'] + " персон; ";
         type.innerHTML = "Крутость " + r['data']['data']['type'];
+        images.setAttribute( 'class', 'grid grid-cols-2' );
 
         for( let i = 0; i < r['data']['data']['images'].length; i++ ){
           var image = document.createElement('img');
-          image.setAttribute( 'height', '100' );
+          image.setAttribute( 'height', '150' );
+          // image.setAttribute( 'width', '250' );
           // image.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
-          images.setAttribute( 'src', r['data']['data']['images'][i] );
+          image.setAttribute( 'src', r['data']['data']['images'][i] );
+          if(i%2 != 0)
+            image.setAttribute( 'class', 'ml-2' );
           images.appendChild( image );
         }
 
         fullRoom.appendChild(title);
-        fullRoom.appendChild(description);
-        fullRoom.appendChild(amenities);
-        fullRoom.appendChild(room);
+        fullRoom.appendChild(fullRoom1);
+        fullRoom1.appendChild(fullRoom2);
+        fullRoom1.appendChild(description);
+        fullRoom2.appendChild(images);
+        fullRoom2.appendChild(amenities);
+        fullRoom2.appendChild(room);
         room.appendChild(cost);
         room.appendChild(capacity);
         room.appendChild(type);
-        fullRoom.appendChild(images);
 
         amenities.innerHTML = "Удобства";
         for( let i = 0; i < r['data']['data']['amenities'].length; i++ ){

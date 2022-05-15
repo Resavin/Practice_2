@@ -36,9 +36,10 @@ function addRooms(rooms){
     if( rooms['data']['status_code'] == 200 ){
       var root = document.getElementById('roomList');
       root.innerHTML = '';
+      root.setAttribute('class','grid lg:grid-cols-2 md:grid-cols-1');
       for( var i = 0; i < rooms['data']['data'].length; i++ ){
 
-        var room = document.createElement("li");
+        var room = document.createElement("div");
         var roomName = document.createElement("a");
         var capasity = document.createElement("div");
         var cost = document.createElement("div");
@@ -63,9 +64,13 @@ function addRooms(rooms){
         roomName.setAttribute('class','no-underline hover:bg-Grey/[.3] \
               hover:shadow-md hover:shadow-Cyan rounded active:text-Cyan text-xl text-Blue \
               no-underline hover:grayscale-0 mt-10');
-        room.setAttribute('class','grid grid-rows-2 grid-flow-col gap-4 py-8');
-        images.setAttribute('class','lg:row-span-2 md:col-span-1 object-contain h-48 w-96');
-        right.setAttribute('class','lg:row-span-1 md:col-span-2');
+        // room.setAttribute('class','border-solid border-Cyan mx-2 my-2 grid grid-rows-2 grid-flow-col gap-4 py-2');
+        // room.setAttribute('class','border-solid border-Cyan mx-2 my-2 grid grid-rows-2 grid-flow-col gap-4 -pl-12 pr-2 py-2');
+        // images.setAttribute('class','lg:row-span-2 md:col-span-1 object-contain h-48 w-96');
+        // right.setAttribute('class','lg:row-span-1 md:col-span-2 -ml-10 -mb-10');
+        room.setAttribute('class','grid grid-cols-2 mt-2 border-solid border-Cyan px-2 py-2 mr-2 ');
+        images.setAttribute('height','150');
+        right.setAttribute('class','ml-4');
 
         right.appendChild( roomName );
         right.appendChild( cost );
