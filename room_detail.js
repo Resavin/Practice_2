@@ -292,10 +292,11 @@ function page_content(){
 
             author.innerHTML = comment_author['username'];
             author.setAttribute('href','user.html?user_login='+comment_author['username'] );
-            author.setAttribute('class','px-4 flex-col flex text-Blue  active:text-Cyan  no-underline grayscale-[30%] hover:grayscale-0 mt-2');
+            author.setAttribute('class','rounded active:text-Black flex-col flex text-Blue  no-underline grayscale-[30%] hover:grayscale-0 mt-2');
 
             date.innerHTML = time_since(comment_date);
             date.setAttribute("id","date_"+comment_id+"_comment");
+            date.setAttribute("class","text-Grey text-sm font-medium italic");
 
             text.innerHTML = comment_text;
             text.setAttribute("id","text_"+comment_id+"_comment");

@@ -48,7 +48,8 @@ function page_content() {
 
           // room.innerHTML = "Номер ";
           room.setAttribute('href','room_detail.html?room=' + _room_id );
-          room.setAttribute('class', 'no-underline text-Cyan  items-center flex flex-col');
+          room.setAttribute('class', 'no-underline text-Blue hover:bg-Grey/[.3] -px-2 -py-1\
+               rounded-lg active:text-Cyan  items-center flex flex-col');
           change_room_title( _room_id, room );
           // arrivalDate.innerHTML = "Дата прибытия: ";
           // arrivalDate2.innerHTML = _arrivalDate;
