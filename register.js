@@ -191,7 +191,9 @@ function reg(){
           localStorage.setItem( 'token', r['data']['data']['token'] );
           localStorage.setItem( 'name', r['data']['data']['users']['username'] );
           //localStorage.setItem( 'id', r['data']['data']['users']['id'] );
-          ret_url = getAllUrlParams()['r'];
+          let par = new URLSearchParams( window.location.search );
+          let ret_url = par.get('r');
+          console.log(ret_url);
           if( ret_url == '' || ret_url == undefined ){
             ret_url = 'test.html'
           }

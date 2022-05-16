@@ -115,14 +115,14 @@ function change_room_title( id ) {
 function select_room() {
 
   url = baseurl + 'rooms'
-  room = document.getElementById('room');
-  room.style.display = 'none';
+  room_title = document.getElementById('room');
+  room_title.style.display = 'none';
   axios.get( baseurl + 'rooms' ).then( function(r){
     if( r.status == 200 ){
       if( r['data']['status_code'] == 200 ){
 
-        room = document.getElementById('room');
-        room.style.display = 'none';
+        room_title = document.getElementById('room');
+        room_title.style.display = 'none';
         short_room_list = document.createElement('div');
         short_room_list.setAttribute('class','items-center flex flex-col border-Cyan rounded border-solid');
         short_room_list.setAttribute('id','select_room');
@@ -132,7 +132,14 @@ function select_room() {
         for( var i = 0; i < r['data']['data'].length; i++ ){
           room = document.createElement('button');
           room.innerHTML = r['data']['data'][i]['title'];
-          room.setAttribute('class','bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-Black rounded border-solid px-5 w-96 h-7');
+          let room_class = 'bg-Black active:bg-Cyan active:text-Black font-semibold text-Green border-0.8 rounded border-solid m-0.5 px-5 w-96 h-7';
+          console.log( r['data']['data'][i]['title'], room_title.value, r['data']['data'][i]['title'] == room_title.value);
+          if(r['data']['data'][i]['title'] == room_title.value ){
+            room_class += " border-Cyan";
+          }else{
+            room_class += " border-Black";
+          }
+          room.setAttribute('class',room_class);
           room.setAttribute('onclick','change_room( '+r['data']['data'][i]['id']+', \''+r['data']['data'][i]['title']+'\', \''+r['data']['data'][i]['capacity']+'\' )')
           short_room_list.appendChild( room );
         }

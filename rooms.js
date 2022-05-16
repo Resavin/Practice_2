@@ -43,6 +43,7 @@ function addRooms(rooms){
         var roomName = document.createElement("a");
         var capasity = document.createElement("div");
         var cost = document.createElement("div");
+        var images_href = document.createElement("a");
         var images = document.createElement("img");
         var type = document.createElement("div");
 
@@ -51,11 +52,13 @@ function addRooms(rooms){
 
         roomName.innerHTML = '<b>' + rooms['data']['data'][i]['title'] + '</b>';
         roomName.setAttribute('href','room_detail.html?room=' + rooms['data']['data'][i]['id'] );
+        images_href.setAttribute('href','room_detail.html?room=' + rooms['data']['data'][i]['id'] );
         roomName.setAttribute('class', '' );
 
         cost.innerHTML = 'Стоимость ' + rooms['data']['data'][i]['cost'];
 
         images.setAttribute( 'src', rooms['data']['data'][i]['images'] );
+        images_href.appendChild(images);
         type.innerHTML = 'Крутость ' + rooms['data']['data'][i]['type'];
         capasity.innerHTML = 'Вместимость ' + rooms['data']['data'][i]['capacity'];
 
@@ -77,7 +80,7 @@ function addRooms(rooms){
         right.appendChild( type );
         right.appendChild( capasity );
 
-        room.appendChild( images );
+        room.appendChild( images_href );
         room.appendChild( right );
 
         root.appendChild( room );
@@ -171,7 +174,7 @@ function page_content(){
   document.getElementById('end_date').style.display = "none";
   //datapick = document.getElementById('datepicker');
   //datapick = document.getElementById('1');
-
+  listRooms();
 
   //datapick.style.display = "none";
   //document.getElementById('datepicker').style.display = "none";

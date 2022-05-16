@@ -29,7 +29,7 @@ function page_content() {
 
           let book = document.createElement('div');
 
-          let room = document.createElement('div');
+          let room = document.createElement('a');
           // let arrivalDate = document.createElement('span');
           let arrivalDate = document.createElement('div');
           let arrivalDate2 = document.createElement('span');
@@ -46,8 +46,9 @@ function page_content() {
           let update_book = document.createElement('button');
           let delete_book = document.createElement('button');
 
-          // room.innerHTML = "Номер "; 
-          room.setAttribute('class', ' text-Cyan  items-center flex flex-col'); 
+          // room.innerHTML = "Номер ";
+          room.setAttribute('href','room_detail.html?room=' + _room_id );
+          room.setAttribute('class', 'no-underline text-Cyan  items-center flex flex-col');
           change_room_title( _room_id, room );
           // arrivalDate.innerHTML = "Дата прибытия: ";
           // arrivalDate2.innerHTML = _arrivalDate;
