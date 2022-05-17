@@ -101,7 +101,7 @@ function page_content(){
 
         fullRoom1.setAttribute( 'class', 'mt-2 grid md:grid-cols-1 lg:grid-cols-2');
         description.innerHTML = r['data']['data']['description'];
-        description.setAttribute( 'class', 'w-[32rem] h-[18rem] text-Green mt-5 border-solid border-Cyan px-3 py-2 font-bold font-sans font-base flex flex-col items-center');
+        description.setAttribute( 'class', 'w-[32rem] h-[20rem] text-Green mt-5 border-solid border-Cyan px-3 py-2 font-bold font-sans font-base flex flex-col items-center');
         fullRoom2.setAttribute( 'class', 'w-[32rem] mr-5 text-Green  mt-5 border-solid border-Cyan px-1 py-2 font-bold font-sans font-base flex flex-col items-center');
         room.setAttribute('class', 'mb-1');
         amenities.setAttribute('class', 'mt-2');
@@ -276,7 +276,13 @@ function page_content(){
           }
 
           comments_list = document.getElementById('comments_list');
-          comments_list.setAttribute('class', 'grid md:grid-cols-3  mr-5')
+          if(r['data']['data']['comments'].length >= 3)
+            comments_list.setAttribute('class', 'grid md:grid-cols-3  mr-5')
+          if(r['data']['data']['comments'].length == 2)
+            comments_list.setAttribute('class', 'grid md:grid-cols-2  mr-5')
+          if(r['data']['data']['comments'].length == 1)
+            comments_list.setAttribute('class', 'grid md:grid-cols-1  mr-5')
+
           for( var i = 0; i < r['data']['data']['comments'].length; i++ ){
             let comment_data = r['data']['data']['comments'][i];
             let comment_author = comment_data['author'];
@@ -290,7 +296,7 @@ function page_content(){
             date = document.createElement('div');
             text = document.createElement('div');
 
-            comment.setAttribute('class','ml-5 border-Cyan text-md border-solid rounded focus:font-bold mt-3 font-medium py-4 px-4 rounded');
+            comment.setAttribute('class','w-96 ml-5 border-Cyan text-md border-solid rounded focus:font-bold mt-3 font-medium py-4 px-4 rounded');
 
             author.innerHTML = comment_author['username'];
             author.setAttribute('href','user.html?user_login='+comment_author['username'] );

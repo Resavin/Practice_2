@@ -17,6 +17,14 @@ function page_content() {
     if( r.status == 200 ){
       if( r['data']['status_code'] == 200 ){
         book_list = document.getElementById('book_list');
+        if(r['data']['data'].length >= 3)
+          book_list.setAttribute('class', '-mt-5 items-center grid grid-cols-3 flex flex-col text-Yellow drop-shadow-2xl');
+        if(r['data']['data'].length == 2)
+          book_list.setAttribute('class', '-mt-5 items-center grid grid-cols-2 flex flex-col text-Yellow drop-shadow-2xl');
+        if(r['data']['data'].length == 1)
+          book_list.setAttribute('class', '-mt-5 items-center grid grid-cols-1 flex flex-col text-Yellow drop-shadow-2xl');
+
+
         for( let i = 0; i < r['data']['data'].length; i++ ){
 
           let _book_id = r['data']['data'][i]['id'];
