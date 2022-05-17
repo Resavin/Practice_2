@@ -3,3 +3,6 @@ body {
 	min-height:90vh;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}

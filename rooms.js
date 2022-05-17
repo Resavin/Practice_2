@@ -71,8 +71,9 @@ function addRooms(rooms){
         // room.setAttribute('class','border-solid border-Cyan mx-2 my-2 grid grid-rows-2 grid-flow-col gap-4 -pl-12 pr-2 py-2');
         // images.setAttribute('class','lg:row-span-2 md:col-span-1 object-contain h-48 w-96');
         // right.setAttribute('class','lg:row-span-1 md:col-span-2 -ml-10 -mb-10');
-        room.setAttribute('class','grid grid-cols-2 mt-2 border-solid border-Cyan px-2 py-2 mr-2 ');
+        room.setAttribute('class','grid grid-cols-2 mt-2 border-solid rounded border-Cyan px-2 py-2 mr-2 ');
         images.setAttribute('height','150');
+        images.setAttribute('class','rounded');
         right.setAttribute('class','ml-4');
 
         right.appendChild( roomName );

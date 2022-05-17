@@ -97,7 +97,7 @@ function page_content() {
           }
 
 
-          book.setAttribute('class', 'border-Cyan rounded border-solid px-4 mt-10 ');
+          book.setAttribute('class', 'mr-5 border-Cyan rounded border-solid px-4 mt-10 ');
           book.setAttribute('id','book_'+_book_id);
 
           book_list.appendChild( book );

@@ -101,8 +101,8 @@ function page_content(){
 
         fullRoom1.setAttribute( 'class', 'mt-2 grid md:grid-cols-1 lg:grid-cols-2');
         description.innerHTML = r['data']['data']['description'];
-        description.setAttribute( 'class', 'w-[32rem] h-[22rem] hover:grayscale-0 grayscale-[30%] text-Green mt-5 border-solid border-Cyan px-3 py-2 font-bold font-sans font-base flex flex-col items-center');
-        fullRoom2.setAttribute( 'class', 'w-[32rem] mr-5 hover:grayscale-0 grayscale-[30%] text-Green  mt-5 border-solid border-Cyan px-3 py-2 font-bold font-sans font-base flex flex-col items-center');
+        description.setAttribute( 'class', 'w-[32rem] h-[18rem] text-Green mt-5 border-solid border-Cyan px-3 py-2 font-bold font-sans font-base flex flex-col items-center');
+        fullRoom2.setAttribute( 'class', 'w-[32rem] mr-5 text-Green  mt-5 border-solid border-Cyan px-1 py-2 font-bold font-sans font-base flex flex-col items-center');
         room.setAttribute('class', 'mb-1');
         amenities.setAttribute('class', 'mt-2');
         title.innerHTML = r['data']['data']['title'];
@@ -115,11 +115,12 @@ function page_content(){
         for( let i = 0; i < r['data']['data']['images'].length; i++ ){
           var image = document.createElement('img');
           image.setAttribute( 'height', '150' );
+          image.setAttribute( 'class', 'rounded-lg' );
           // image.setAttribute( 'width', '250' );
           // image.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
           image.setAttribute( 'src', r['data']['data']['images'][i] );
           if(i%2 != 0)
-            image.setAttribute( 'class', 'ml-2' );
+            image.setAttribute( 'class', 'ml-2 rounded-lg' );
           images.appendChild( image );
         }
 
@@ -275,6 +276,7 @@ function page_content(){
           }
 
           comments_list = document.getElementById('comments_list');
+          comments_list.setAttribute('class', 'grid md:grid-cols-3  mr-5')
           for( var i = 0; i < r['data']['data']['comments'].length; i++ ){
             let comment_data = r['data']['data']['comments'][i];
             let comment_author = comment_data['author'];
@@ -288,18 +290,19 @@ function page_content(){
             date = document.createElement('div');
             text = document.createElement('div');
 
-            comment.setAttribute('class','border-Cyan text-md border-solid rounded focus:font-bold mt-3 font-medium py-4 px-4 rounded');
+            comment.setAttribute('class','ml-5 border-Cyan text-md border-solid rounded focus:font-bold mt-3 font-medium py-4 px-4 rounded');
 
             author.innerHTML = comment_author['username'];
             author.setAttribute('href','user.html?user_login='+comment_author['username'] );
-            author.setAttribute('class','rounded active:text-Black flex-col flex text-Blue  no-underline grayscale-[30%] hover:grayscale-0 mt-2');
+            author.setAttribute('class','rounded active:text-Black flex-col flex text-Blue font-extrabold no-underline grayscale-[30%] hover:grayscale-0 mt-2');
 
             date.innerHTML = time_since(comment_date);
             date.setAttribute("id","date_"+comment_id+"_comment");
-            date.setAttribute("class","text-Grey text-sm font-medium italic");
+            date.setAttribute("class","text-Grey italic");
 
             text.innerHTML = comment_text;
             text.setAttribute("id","text_"+comment_id+"_comment");
+            text.setAttribute("class","font-bold");
 
 
             comment.appendChild(author);
@@ -387,6 +390,7 @@ function delete_comment_dialog( comment_id ) {
   delete_button = document.getElementById("delete_"+comment_id+"_comment_button");
   date = document.getElementById("date_"+comment_id+"_comment");
   text = document.getElementById("text_"+comment_id+"_comment");
+  text.setAttribute('class', 'font-semibold font-lg');
   edit_button.style.display = 'none';
   delete_button.style.display = 'none';
 

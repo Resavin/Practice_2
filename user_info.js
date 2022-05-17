@@ -46,9 +46,15 @@ function edit_user(){
   document.getElementById('first_name').removeAttribute('readonly');
   document.getElementById('second_name').removeAttribute('readonly');
   document.getElementById('phone').removeAttribute('readonly');
+   document.getElementById('username').setAttribute('class', 'bg-White border-Purple text-md border-solid rounded focus:font-bold text-Black w-72 text-Black   font-semibold py-4 px-4 h-0  rounded');
+  document.getElementById('email').setAttribute('class', 'bg-White border-Purple text-md border-solid rounded focus:font-bold text-Black w-72 text-Black   font-semibold py-4 px-4 h-0  rounded');
+  document.getElementById('first_name').setAttribute('class', 'bg-White border-Blue text-md border-solid rounded focus:font-bold text-Black w-72 text-Black   font-semibold py-4 px-4 h-0  rounded');
+  document.getElementById('second_name').setAttribute('class', 'bg-White border-Blue text-md border-solid rounded focus:font-bold text-Black w-72 text-Black   font-semibold py-4 px-4 h-0  rounded');
+  document.getElementById('phone').setAttribute('class', 'bg-White border-Blue text-md border-solid rounded focus:font-bold text-Black w-72 text-Black   font-semibold py-4 px-4 h-0  rounded');
 
   document.getElementById('save_user').style.display = "block";
   document.getElementById('edit_user').style.display = "none";
+  // document.getElementsByClassName('inp').setAttribute('class', 'bg-White')
 
 }
 
