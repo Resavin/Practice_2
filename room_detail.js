@@ -107,7 +107,7 @@ function page_content(){
         amenities.setAttribute('class', 'mt-2');
         title.innerHTML = r['data']['data']['title'];
         title.setAttribute( 'class', 'text-2xl italic flex flex-col items-center');
-        cost.innerHTML = "Cтоит " + r['data']['data']['cost'] + " денег в день; ";
+        cost.innerHTML = "Cтоит " + r['data']['data']['cost'] + " септимов в день; ";
         capacity.innerHTML = "номер на " + r['data']['data']['capacity'] + " персон; ";
         type.innerHTML = "Крутость " + r['data']['data']['type'];
         images.setAttribute( 'class', 'grid grid-cols-2' );
@@ -572,7 +572,7 @@ function calculate_cost(){
     if( r['status'] == 200 ){
       if( r['data']['status_code'] == 200 ){
         cost = document.getElementById('cost');
-                cost.innerHTML = "Это будет стоить " + r['data']['data']['cost'] + " денег";
+                cost.innerHTML = "Это будет стоить " + r['data']['data']['cost'] + " септимов";
 
         let book = document.createElement('a');
 

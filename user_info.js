@@ -24,7 +24,9 @@ function change_pass(){
 
     axios.put(url, profile, header).then(function(r){
       if( r.status == 200){
-
+        if( r['data'].status_code == 200 ){
+          window.location.reload();
+        }
       }else{
       throw {
          name: 'NetworkError',
