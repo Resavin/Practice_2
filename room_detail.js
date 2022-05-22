@@ -110,11 +110,14 @@ function page_content(){
         cost.innerHTML = "Cтоит " + r['data']['data']['cost'] + " септимов в день; ";
         capacity.innerHTML = "номер на " + r['data']['data']['capacity'] + " персон; ";
         type.innerHTML = "Крутость " + r['data']['data']['type'];
-        images.setAttribute( 'class', 'grid grid-cols-2' );
+        if(r['data']['data']['images'].length > 1)
+          images.setAttribute( 'class', 'grid grid-cols-2' );
+        if(r['data']['data']['images'].length == 1)
+          images.setAttribute( 'class', 'grid grid-cols-1' );
 
         for( let i = 0; i < r['data']['data']['images'].length; i++ ){
           var image = document.createElement('img');
-          image.setAttribute( 'height', '150' );
+          image.setAttribute( 'width', '240' );
           image.setAttribute( 'class', 'rounded-lg' );
           // image.setAttribute( 'width', '250' );
           // image.setAttribute( 'class', 'text-Green font-bold font-sans font-base flex flex-col items-center');
@@ -396,7 +399,6 @@ function delete_comment_dialog( comment_id ) {
   delete_button = document.getElementById("delete_"+comment_id+"_comment_button");
   date = document.getElementById("date_"+comment_id+"_comment");
   text = document.getElementById("text_"+comment_id+"_comment");
-  text.setAttribute('class', 'font-semibold font-lg');
   edit_button.style.display = 'none';
   delete_button.style.display = 'none';
 
@@ -414,6 +416,7 @@ function delete_comment_dialog( comment_id ) {
   confirm_button.style.display = 'block';
 
   confirm_dialog.setAttribute('id','delete_comment_'+comment_id+'_dialog');
+  confirm_dialog.setAttribute('class','text-Cyan');
   cancel_button.setAttribute('id','delete_comment_'+comment_id+'_cancel');
   confirm_button.setAttribute('id','delete_comment_'+comment_id+'_confirm');
   cancel_button.setAttribute('onclick','cancel_delete_comment_dialog('+comment_id+')');
